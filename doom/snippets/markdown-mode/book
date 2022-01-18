@@ -1,0 +1,17 @@
+# -*- mode: snippet -*-
+# name: book
+# key: trigger-key
+# condition: t         
+# --
+
+subtitle: ""
+summary: "$1"
+authors: []
+tags: ["Books"]
+categories: ["Summary"]
+date: 2020-$3
+lastmod: 2020-$4
+featured: false
+draft: true
+projects: ["book-summaries"]
+---
