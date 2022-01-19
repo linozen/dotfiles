@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: citep-page
+# key: cp
+# condition: t
+# --
+[[citep:$1][$2]]

@@ -1,0 +1,8 @@
+[user]
+	email = linus@sehn.tech
+	name = linozen
+
+[includeIf "gitdir:~/Projects/fsfe/"]
+    path = ~/.gitconfig-fsfe
+[github]
+	user = linozen

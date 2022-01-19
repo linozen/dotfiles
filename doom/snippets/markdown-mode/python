@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: python
-# key: trigger-key
-# condition: t
-# --
-
-\`\`\`python
-$1
-\`\`\`

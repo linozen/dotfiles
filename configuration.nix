@@ -8,19 +8,24 @@ let
     export __VK_LAYER_NV_optimus=NVIDIA_only
     exec -a "$0" "$@"
   '';
+
 in {
   imports = [
     # Import hardware configuration
     ./hardware-configuration.nix
-    # Import home-manager module
-    <home-manager/nixos>
   ];
 
-  nix.nixPath = [
-    "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
-    "nixos-config=/home/lino/.dotfiles/configuration.nix"
-    "/nix/var/nix/profiles/per-user/root/channels"
-  ];
+  nix = {
+    package = pkgs.nix_2_4;
+    extraOptions = ''
+      experimental-features = nix-command flakes
+    '';
+    nixPath = [
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
+      "nixos-config=/home/lino/.dotfiles/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
+    ];
+  };
 
   # Set (perhaps temporarily) higher limits to not run into problems
   # when installing Doom Emacs
@@ -76,10 +81,15 @@ in {
   services.zfs = {
     autoScrub.enable = true;
     autoSnapshot.enable = true;
-    # TODO Set up autoReplication
+    # TODO Set up autoReplication of all important datasets
   };
 
-  # TODO Backups of /safe/persist
+  # Don't enable auto-optimisation for now but remove generations older than two weeks
+  # nix.autoOptimiseStore = true;
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 14d";
+  };
 
   # Set timezone
   time.timeZone = "Europe/Berlin";
@@ -177,10 +187,61 @@ in {
     nvidia-offload
     pkgs.gcc
     pkgs.vim
+    pkgs.age
     pkgs.mullvad-vpn
     pkgs.brightnessctl
     pkgs.pinentry-gnome
+    pkgs.alacritty
+    pkgs.git
+    pkgs.firefox
+    pkgs.gnupg
+    pkgs.glxinfo
   ];
+
+  # Configure Backups
+  # See: https://christine.website/blog/borg-backup-2021-01-09
+  services.borgbackup.jobs."borgbase" = {
+    paths = [ "/home" "/persist" ];
+    exclude = [
+      # Large paths in /persist
+      "/persist/var/lib/docker"
+      "/persist/var/lib/libvirt"
+
+      # Temporary files and caches in /home
+      "/home/*/.cache"
+      "/home/*/.compose-cache"
+      "/home/*/cache2"
+      "/home/*/Cache"
+      "/home/*/.npm/_cacache"
+      "/home/*/__pycache__"
+      "/home/*/target"
+      "/home/*/go/bin"
+      "/home/*/go/pkg"
+      "/home/*/node_modules"
+      "/home/*/bower_components"
+      "/home/*/_build"
+      "/home/*/.tox"
+      "/home/*/venv"
+      "/home/*/.venv"
+    ];
+    repo = "oxti13j3@oxti13j3.repo.borgbase.com:repo";
+    encryption = {
+      mode = "repokey-blake2";
+      passCommand = "cat /persist/borg/passphrase";
+    };
+    environment.BORG_RSH = "ssh -i /persist/borg/ssh_key";
+    compression = "auto,lzma";
+    startAt = "hourly";
+    prune.keep = {
+      within = "2d"; # Keep all archives from the last two days
+      daily = 14;
+      weekly = 4;
+      monthly = -1; # Keep at least one archive for each month
+    };
+  };
+
+  # Enable fish for vendot completions
+  programs.fish.enable = true;
 
   # Enable Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];
@@ -228,182 +289,11 @@ in {
         group = "users";
         uid = 1000;
         home = "/home/lino";
-        useDefaultShell = true;
+        shell = pkgs.fish;
         openssh.authorizedKeys.keys = [
           "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICoo8noU60lsn//NcPar2QxwLtnkn1ZODVIJddUylYCu lino@tower"
         ];
       };
-    };
-  };
-
-  home-manager.users.lino = { config, pkgs, ... }: {
-    # Enable Emacs overlay
-    nixpkgs.overlays = [
-      (import (builtins.fetchGit {
-        url = "https://github.com/nix-community/emacs-overlay.git";
-        ref = "master";
-        rev = "7b8d3f12dc35a1dbf93a2a6be30d9e6b157ba17e";
-      }))
-    ];
-    # Install user applications
-    home.packages = with pkgs; [
-      # Basic
-      alacritty
-      git
-      firefox
-      gnupg
-      glxinfo
-      # Gnome-related
-      gnomeExtensions.x11-gestures
-      gnomeExtensions.tiling-assistant
-      gnomeExtensions.gnome-40-ui-improvements
-      gnomeExtensions.mullvad-indicator
-      gnomeExtensions.hide-top-bar
-      gnomeExtensions.floating-dock
-      gnomeExtensions.clipboard-indicator
-      gnome.gnome-tweaks
-      dconf2nix
-      # Nix-related
-      nix-prefetch-git
-      # Theming
-      pkgs.libsForQt5.qtstyleplugin-kvantum
-      papirus-icon-theme
-      nordic
-      rubik
-      nerdfonts
-      # Communication
-      signal-desktop
-      element-desktop
-      # Bitwarden
-      # TODO Setup WebAuthn and and TOTP for both keys
-      bitwarden
-      bitwarden-cli
-      # YubiKey
-      yubikey-manager
-      # Email
-      age
-      # (Doom) Emacs dependencies
-      fd
-      gnutls
-      imagemagick
-      zstd
-      emacs-all-the-icons-fonts
-      nixfmt
-      (ripgrep.override { withPCRE2 = true; })
-      python3Minimal
-      python39Packages.pywal
-      (aspellWithDicts (ds: with ds; [ de en en-computers en-science ]))
-      sqlite
-      nodePackages.typescript-language-server
-      texlive.combined.scheme-medium
-    ];
-
-    # TODO Backups of user data
-
-    # Configure GnuPG
-    programs.gpg = {
-      enable = true;
-      publicKeys = [
-        {
-          source = ./pgp/fsfe_max.key;
-          trust = "marginal";
-        }
-        {
-          source = ./pgp/fsfe_mk.key;
-          trust = "marginal";
-        }
-        {
-          source = ./pgp/fsfe_patrick.key;
-          trust = "marginal";
-        }
-        {
-          source = ./pgp/fsfe_heiki.key;
-          trust = "marginal";
-        }
-        {
-          source = ./pgp/fsfe_heiki.key;
-          trust = "marginal";
-        }
-        {
-          source = ./pgp/fsfe_linda.key;
-          trust = "marginal";
-        }
-      ];
-    };
-
-    # Import (mostly Gnome related) dconf settings
-    imports = [ ./dconf.nix ];
-
-    # Symlink application's configuration files
-    home.file = {
-      ".config/alacritty/alacritty.yml".source = ./alacritty.yml;
-      ".config/qt5ct/qt5ct.conf".source = ./qt5ct.conf;
-      ".ssh/config".source = ./ssh/client/config;
-      ".doom.d".source = config.lib.file.mkOutOfStoreSymlink ./doom;
-      ".config/Element/config.json".source = ./element/config.json;
-    };
-
-    # TODO Setup git
-
-    # Setup mail indexing with mbsync / mu
-    programs.mbsync.enable = true;
-    programs.msmtp.enable = true;
-    programs.mu.enable = true;
-    accounts.email = {
-      # Main account used for fetching all and sending personal mail
-      accounts.mailbox = {
-        address = "linus@sehn.tech";
-        mbsync = {
-          enable = true;
-          create = "both";
-          expunge = "both";
-        };
-        imap = {
-          host = "imap.mailbox.org";
-          port = 993;
-        };
-        msmtp.enable = true;
-        smtp = {
-          host = "smtp.mailbox.org";
-          port = 465;
-        };
-        primary = true;
-        userName = "linus@sehn.tech";
-        passwordCommand = "gpg --decrypt ~/.mailpass-mailbox.gpg 2>/dev/null";
-      };
-      # Account for sending mails via FSFE mailserver
-      accounts.fsfe = {
-        address = "linus@fsfe.org";
-        msmtp.enable = true;
-        smtp = {
-          host = "mail.fsfe.org";
-          port = 587;
-          tls.useStartTls = true;
-        };
-        userName = "linus@fsfe.org";
-        passwordCommand = "gpg --decrypt ~/.mailpass-fsfe.gpg 2>/dev/null";
-      };
-    };
-
-    # Install Emacs with natively compiled backend using overlay:
-    # https://gist.github.com/mjlbach/179cf58e1b6f5afcb9a99d4aaf54f549
-    programs.emacs = {
-      enable = true;
-      package = pkgs.emacsGcc;
-      extraPackages = (epkgs: [
-        # Needed for terminal emulation inside Emacs
-        epkgs.vterm
-        # Needed for reading mails inside Emacs
-        pkgs.mu
-      ]);
-    };
-
-    # Make Emacs client work correctly
-    xsession.enable = true;
-    services.emacs.enable = true;
-    systemd.user.services.emacs.Unit = {
-      After = [ "graphical-session-pre.target" ];
-      PartOf = [ "graphical-session.target" ];
     };
   };
 
