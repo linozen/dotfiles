@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+# Source: https://gist.github.com/mx00s/ea2462a3fe6fdaa65692fe7ee824de3e
 #
 # NixOS install script synthesized from:
 #
@@ -12,6 +13,10 @@
 #
 # Example: `sudo ./install.sh sde`
 #
+
+# TODO Fix issues with hostname
+# TODO Add final install part
+# TODO add isNormalUser to lino
 
 set -euo pipefail
 
@@ -32,15 +37,9 @@ function info {
 ################################################################################
 
 export DISK=$1
-export HOSTNAME=$2
 
 if ! [[ -v DISK ]]; then
     err "Missing argument. Expected block device name, e.g. 'sda'"
-    exit 1
-fi
-
-if ! [[ -v HOSTNAME ]]; then
-    err "Missing argument. Expected block device name, e.g. 'titan'"
     exit 1
 fi
 
@@ -142,6 +141,9 @@ nixos-generate-config --root /mnt
 info "Enter personal user name ..."
 read USER_NAME
 
+info "Enter personal user name ..."
+read HOSTNAME
+
 info "Moving generated hardware-configuration.nix to /persist/etc/nixos/ ..."
 mkdir -p /mnt/persist/etc/nixos
 mv /mnt/etc/nixos/hardware-configuration.nix /mnt/persist/etc/nixos/
@@ -162,7 +164,9 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
 
   nix.nixPath =
     [
+      "nixpkgs=/nix/var/nix/profiles/per-user/root/channels/nixos"
       "nixos-config=/persist/etc/nixos/configuration.nix"
+      "/nix/var/nix/profiles/per-user/root/channels"
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -185,8 +189,7 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
   networking.hostName = "${HOSTNAME}";
 
   networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.enp5s0.useDHCP = true;
 
   environment.systemPackages = with pkgs;
     [
@@ -218,13 +221,12 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
     mutableUsers = false;
     users = {
       root = {
-        initialHashedPassword =
-          "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
+        initialPassword = "password";
       };
       ${USER_NAME} = {
+        isNormalUser = true;
         createHome = true;
-        initialHashedPassword =
-          "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
+        initialPassword = "password";
         extraGroups = [ "wheel" ];
         group = "users";
         uid = 1000;
@@ -244,3 +246,7 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
 
 }
 EOF
+
+info "Installing NixOS to /mnt ..."
+ln -s /mnt/persist/etc/nixos/configuration.nix /mnt/etc/nixos/configuration.nix
+nixos-install -I "nixos-config=/mnt/persist/etc/nixos/configuration.nix" --no-root-passwd
