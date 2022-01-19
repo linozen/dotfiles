@@ -141,8 +141,11 @@ nixos-generate-config --root /mnt
 info "Enter personal user name ..."
 read USER_NAME
 
-info "Enter personal user name ..."
-read HOSTNAME
+info "Enter name for this host ..."
+read COMPUTER_NAME
+
+info "Enter primary interface (ip -c a) ..."
+read INTERFACE_NAME
 
 info "Moving generated hardware-configuration.nix to /persist/etc/nixos/ ..."
 mkdir -p /mnt/persist/etc/nixos
@@ -186,10 +189,10 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
   }; 
 
   networking.hostId = "$(head -c 8 /etc/machine-id)";
-  networking.hostName = "${HOSTNAME}";
+  networking.hostName = "${COMPUTER_NAME}";
 
   networking.useDHCP = false;
-  networking.interfaces.enp5s0.useDHCP = true;
+  networking.interfaces.${INTERFACE_NAME}.useDHCP = true;
 
   environment.systemPackages = with pkgs;
     [
