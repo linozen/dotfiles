@@ -78,6 +78,8 @@
     nodePackages.bash-language-server
   ];
 
+  # TODO Setup XMPP (Dino)
+
   # Configure GnuPG
   programs.gpg = {
     enable = true;

@@ -27,12 +27,12 @@
       };
 
       homeManagerConfigurations = {
-        lino = home-manager.lib.homeManagerConfiguration {
+        lino-crius = home-manager.lib.homeManagerConfiguration {
           inherit system pkgs;
           stateVersion = "21.11";
           username = "lino";
           homeDirectory = "/home/lino";
-          configuration = { imports = [ ./users/lino/home.nix ]; };
+          configuration = { imports = [ ./users/lino/crius.nix ]; };
         };
       };
     };

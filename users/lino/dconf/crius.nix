@@ -302,7 +302,7 @@ in
       disable-user-extensions = false;
       disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" ];
       enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" ];
-      favorite-apps = [ "emacsclient.desktop" "Alacritty.desktop" "firefox.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
+      favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
       had-bluetooth-devices-setup = true;
       remember-mount-password = false;
       welcome-dialog-last-shown-version = "41.1";
@@ -358,10 +358,10 @@ in
     "org/gnome/shell/extensions/hidetopbar" = {
       animation-time-autohide = 0.1;
       animation-time-overview = 0.2;
-      enable-active-window = false;
-      enable-intellihide = false;
+      enable-active-window = true;
+      enable-intellihide = true;
       mouse-sensitive = true;
-      pressure-threshold = 50;
+      pressure-threshold = 20;
       pressure-timeout = 1000;
       show-in-overview = true;
     };
