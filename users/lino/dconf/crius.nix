@@ -290,7 +290,7 @@ in
     "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0" = {
       binding = "<Super>space";
       command = "alacritty";
-      name = "Launch terminal";
+      name = "Lauch Terminal";
     };
 
     "org/gnome/settings-daemon/plugins/power" = {
