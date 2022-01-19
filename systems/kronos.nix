@@ -3,7 +3,7 @@
 {
   imports = [
     # Import hardware configuration
-    ./crius-hardware.nix
+    ./kronos-hardware.nix
   ];
 
   nix = {
@@ -238,15 +238,18 @@
   services.mullvad-vpn.enable = true;
 
   # Symlink important stuff in /etc to /persist/etc
-  environment.etc = {
-    "NetworkManager/system-connections".source =
-      "/persist/etc/NetworkManager/system-connections/";
-    "mullvad-vpn".source = "/persist/etc/mullvad-vpn/";
-  };
+  environment.etc = { "mullvad-vpn".source = "/persist/etc/mullvad-vpn/"; };
 
   # Symlink important stuff in /var to /persist/var
   systemd.tmpfiles.rules =
     [ "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth" ];
+
+  # Configure SSH Daemon
+  services.sshd.enable = true;
+  services.openssh = {
+    enable = true;
+    openFirewall = true;
+  };
 
   # Configure users declaratively
   users = {
@@ -273,7 +276,7 @@
         home = "/home/lino";
         shell = pkgs.fish;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICoo8noU60lsn//NcPar2QxwLtnkn1ZODVIJddUylYCu lino@tower"
+          "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCsxjy3hag1wsV6xnwPUjLMF7/PO9ZOGx7OkEXpCQOTtZwNwMatnsBml0oCQX2u5qW1YOtNoF2106IE4R4Ls/IM="
         ];
       };
     };
