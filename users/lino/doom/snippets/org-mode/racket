@@ -1,9 +1,0 @@
-# -*- mode: snippet -*-
-# name: racket
-# key: rkt
-# condition: t
-# --
-#+begin_src racket
-#lang sicp
-$0
-#+end_src
