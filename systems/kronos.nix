@@ -1,15 +1,6 @@
 { config, pkgs, lib, ... }:
 
-let
-  nvidia-offload = pkgs.writeShellScriptBin "nvidia-offload" ''
-    export __NV_PRIME_RENDER_OFFLOAD=1
-    export __NV_PRIME_RENDER_OFFLOAD_PROVIDER=NVIDIA-G0
-    export __GLX_VENDOR_LIBRARY_NAME=nvidia
-    export __VK_LAYER_NV_optimus=NVIDIA_only
-    exec -a "$0" "$@"
-  '';
-
-in {
+{
   imports = [
     # Import hardware configuration
     ./crius-hardware.nix
@@ -41,17 +32,10 @@ in {
 
   # Use latest kernel
   # boot.kernelPackages = pkgs.linuxPackages_latest;
-  hardware.nvidia.modesetting.enable = true;
+  # hardware.nvidia.modesetting.enable = true;
 
-  # Configure NVIDIA RTX 2070 Max-Q
-  hardware.nvidia.nvidiaPersistenced = true;
-  hardware.nvidia.prime = {
-    offload.enable = true;
-    # Bus ID of the Intel GPU
-    intelBusId = "PCI:0:2:0";
-    # Bus ID of the NVIDIA GPU
-    nvidiaBusId = "PCI:1:0:0";
-  };
+  # Configure NVIDIA RTX 2070 Super
+  # hardware.nvidia.nvidiaPersistenced = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -95,12 +79,11 @@ in {
   time.timeZone = "Europe/Berlin";
 
   # TODO Confifure Networking
-  networking.hostId = "8d7271a2";
-  networking.hostName = "crius";
+  networking.hostId = "2ce35e9c";
+  networking.hostName = "kronos";
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
+  networking.interfaces.enp0s5.useDHCP = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -184,7 +167,6 @@ in {
 
   # Install system applications
   environment.systemPackages = [
-    nvidia-offload
     pkgs.gcc
     pkgs.vim
     pkgs.age
@@ -272,8 +254,8 @@ in {
     users = {
       root = {
         # Include only for first boot
-        # initialHashedPassword =
-        #   "$6$L9J7/mFLT5g29nZr$B1sP8NckbzHUxKxZ9bf4/FXmYbN4pLC3ovA7H058ONOD8lCcVgcM/.xlMexpeDFu9EZl0pbL.ZDe7df7t74PB0";
+        initialHashedPassword =
+          "$6$L9J7/mFLT5g29nZr$B1sP8NckbzHUxKxZ9bf4/FXmYbN4pLC3ovA7H058ONOD8lCcVgcM/.xlMexpeDFu9EZl0pbL.ZDe7df7t74PB0";
         # ---
         # This file includes nothing but the hashed version of the password for the root user
         passwordFile = "/persist/passwords/root";
@@ -282,8 +264,8 @@ in {
         isNormalUser = true;
         createHome = true;
         # See above
-        # initialHashedPassword =
-        #   "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
+        initialHashedPassword =
+          "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
         passwordFile = "/persist/passwords/lino";
         extraGroups = [ "wheel" ];
         group = "users";
