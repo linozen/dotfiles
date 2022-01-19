@@ -276,7 +276,7 @@
         home = "/home/lino";
         shell = pkgs.fish;
         openssh.authorizedKeys.keys = [
-          "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBCsxjy3hag1wsV6xnwPUjLMF7/PO9ZOGx7OkEXpCQOTtZwNwMatnsBml0oCQX2u5qW1YOtNoF2106IE4R4Ls/IM="
+          "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDqf8875YKiWOmppVNyKIJLFICCjMsUFVK9SnKwyupjSe/8ni0WgzYtT5bU4rJ9EjHiX5VEdJFU5QqkceTSO0aM="
         ];
       };
     };

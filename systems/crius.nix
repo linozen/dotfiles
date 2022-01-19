@@ -200,6 +200,14 @@ in {
 
   # Configure Backups
   # See: https://christine.website/blog/borg-backup-2021-01-09
+  # First, make BorgBase repo a known host
+  programs.ssh.knownHosts = {
+    borgbase = {
+      hostNames = [ "oxti13j3@oxti13j3.repo.borgbase.com" ];
+      publicKey =
+        "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMS3185JdDy7ffnr0nLWqVy8FaAQeVh1QYUSiNpW5ESq";
+    };
+  };
   services.borgbackup.jobs."borgbase" = {
     paths = [ "/home" "/persist" ];
     exclude = [
@@ -291,7 +299,7 @@ in {
         home = "/home/lino";
         shell = pkgs.fish;
         openssh.authorizedKeys.keys = [
-          "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICoo8noU60lsn//NcPar2QxwLtnkn1ZODVIJddUylYCu lino@tower"
+          "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBODwLZY9WHSyvpG1C0lns1e3xZQpIL6Gj1ZZsA61BCjK3agBqHd7pPPZOpCGt0JBNlvc0ZULp93ARZQSPF3rNgs="
         ];
       };
     };

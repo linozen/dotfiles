@@ -228,7 +228,7 @@ in
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 1053 765 ];
+      window-state = mkTuple [ 1230 656 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -238,7 +238,7 @@ in
 
     "org/gnome/gnome-system-monitor/proctree" = {
       columns-order = [ 0 1 2 3 4 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
-      sort-col = 8;
+      sort-col = 15;
       sort-order = 0;
     };
 
@@ -516,7 +516,7 @@ in
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 689 70 ];
+      window-position = mkTuple [ 345 70 ];
       window-size = mkTuple [ 1231 902 ];
     };
 

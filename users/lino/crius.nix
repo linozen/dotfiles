@@ -124,8 +124,6 @@
     ".config/Element/config.json".source = ./element/config.json;
     ".config/fish/fish_variables".source = ./fish_variables;
     ".config/starship.toml".source = ./starship.toml;
-    # Doom Emacs is not yet reproducible
-    ".doom.d".source = config.lib.file.mkOutOfStoreSymlink ./doom;
   };
   # Configure fish shell
   programs.fish.enable = true;
