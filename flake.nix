@@ -24,6 +24,10 @@
           inherit system;
           modules = [ ./systems/crius.nix ];
         };
+        kronos = lib.nixosSystem {
+          inherit system;
+          modules = [ ./systems/kronos.nix ];
+        };
       };
 
       homeManagerConfigurations = {
@@ -33,6 +37,13 @@
           username = "lino";
           homeDirectory = "/home/lino";
           configuration = { imports = [ ./users/lino/crius.nix ]; };
+        };
+        lino-kronos = home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs;
+          stateVersion = "21.11";
+          username = "lino";
+          homeDirectory = "/home/lino";
+          configuration = { imports = [ ./users/lino/kronos.nix ]; };
         };
       };
     };

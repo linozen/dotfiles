@@ -14,9 +14,7 @@
 # Example: `sudo ./install.sh sde`
 #
 
-# TODO Fix issues with hostname
-# TODO Add final install part
-# TODO add isNormalUser to lino
+# TODO Add flake support for initial config
 
 set -euo pipefail
 
