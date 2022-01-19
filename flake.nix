@@ -22,8 +22,7 @@
       nixosConfigurations = {
         crius = lib.nixosSystem {
           inherit system;
-
-          modules = [ ./configuration.nix ];
+          modules = [ ./systems/crius.nix ];
         };
       };
 

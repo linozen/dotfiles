@@ -12,7 +12,7 @@ let
 in {
   imports = [
     # Import hardware configuration
-    ./hardware-configuration.nix
+    ./crius-hardware.nix
   ];
 
   nix = {
