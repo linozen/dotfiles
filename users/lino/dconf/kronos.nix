@@ -16,6 +16,14 @@ in
       width = 1546;
     };
 
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "/org/gnome/shell/extensions/just-perfection/accessibility-menu";
+      saved-view = "/org/gnome/shell/extensions/";
+      window-height = 500;
+      window-is-maximized = false;
+      window-width = 1067;
+    };
+
     "org/gnome/Fractal" = {
       main-window-state-height = 644;
       main-window-state-maximized = false;
@@ -51,7 +59,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "bluetooth";
+      last-panel = "keyboard";
     };
 
     "org/gnome/desktop/background" = {
@@ -161,6 +169,8 @@ in
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
       close = [ "<Super>q" ];
+      cycle-windows = [];
+      cycle-windows-backward = [];
       move-to-workspace-1 = [ "<Shift><Alt>exclam" ];
       move-to-workspace-2 = [ "<Shift><Alt>quotedbl" ];
       move-to-workspace-3 = [ "<Shift><Alt>sterling" ];
@@ -303,7 +313,7 @@ in
     };
 
     "org/gnome/settings-daemon/plugins/media-keys" = {
-      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" ];
+      custom-keybindings = [ "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/" "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1/" ];
       help = [];
       home = [ "<Super>f" ];
       www = [ "<Super>b" ];
@@ -315,6 +325,12 @@ in
       name = "Lauch Terminal";
     };
 
+    "org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom1" = {
+      binding = "<Alt>Escape";
+      command = "emacsclient -nc";
+      name = "Launch Emacs (Client)";
+    };
+
     "org/gnome/settings-daemon/plugins/power" = {
       idle-dim = true;
     };
@@ -322,8 +338,8 @@ in
     "org/gnome/shell" = {
       command-history = [ "r" ];
       disable-user-extensions = false;
-      disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" ];
-      enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" ];
+      disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" "syncthingicon@jay.strict@posteo.de" ];
+      enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" "syncthing@gnome.2nv2u.com" ];
       favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
       had-bluetooth-devices-setup = true;
       remember-mount-password = false;
@@ -386,41 +402,6 @@ in
       pressure-threshold = 20;
       pressure-timeout = 1000;
       show-in-overview = true;
-    };
-
-    "org/gnome/shell/extensions/just-perfection" = {
-      accessibility-menu = false;
-      activities-button = false;
-      animation = 3;
-      app-menu = false;
-      app-menu-icon = true;
-      background-menu = false;
-      clock-menu = true;
-      dash = true;
-      dash-icon-size = 0;
-      double-super-to-appgrid = false;
-      gesture = true;
-      hot-corner = false;
-      keyboard-layout = false;
-      osd = true;
-      panel = true;
-      panel-arrow = true;
-      panel-corner-size = 0;
-      panel-in-overview = true;
-      panel-size = 0;
-      ripple-box = true;
-      search = true;
-      show-apps-button = false;
-      startup-status = 1;
-      theme = false;
-      window-demands-attention-focus = true;
-      window-picker-icon = true;
-      window-preview-caption = true;
-      workspace = true;
-      workspace-background-corner-size = 0;
-      workspace-popup = true;
-      workspace-switcher-should-show = false;
-      workspaces-in-app-grid = true;
     };
 
     "org/gnome/shell/extensions/mullvadindicator" = {
@@ -492,6 +473,10 @@ in
     };
 
     "org/gnome/shell/keybindings" = {
+      switch-to-application-1 = [];
+      switch-to-application-2 = [];
+      switch-to-application-3 = [];
+      switch-to-application-4 = [];
       toggle-application-view = [];
       toggle-overview = [];
     };
@@ -528,7 +513,7 @@ in
       task-list-url = "";
       task-pane-position = 998;
       virtual-midnight = mkTuple [ 2 0 ];
-      window-position = mkTuple [ 22 22 ];
+      window-position = mkTuple [ 2619 88 ];
       window-size = mkTuple [ 1248 1358 ];
     };
 
