@@ -14,7 +14,10 @@
           id =
             "NOTUJRB-GLRQQSR-UXVA6HC-P3NUMA3-VONDKV4-3XWQAUM-6M2PF7D-QJIERAK";
         };
-        "crius" = { id = ""; };
+        "crius" = {
+          id =
+            "QQ6XDR3-I4DVVCN-KRR6V3X-4OTVYWY-CQLQFQ4-KBWQCXC-VVYJF7H-ZLPYSQC";
+        };
       };
       folders = {
         "org" = {

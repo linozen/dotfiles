@@ -13,6 +13,8 @@ in {
   imports = [
     # Import hardware configuration
     ./crius-hardware.nix
+    # Import modules
+    ./modules/syncthing.nix
   ];
 
   nix = {
