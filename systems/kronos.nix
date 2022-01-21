@@ -4,6 +4,8 @@
   imports = [
     # Import hardware configuration
     ./kronos-hardware.nix
+    ./modules/innernet.nix
+    ./modules/syncthing.nix
   ];
 
   nix = {
@@ -167,17 +169,17 @@
 
   # Install system applications
   environment.systemPackages = [
-    pkgs.gcc
-    pkgs.vim
     pkgs.age
-    pkgs.mullvad-vpn
-    pkgs.brightnessctl
-    pkgs.pinentry-gnome
     pkgs.alacritty
-    pkgs.git
+    pkgs.brightnessctl
     pkgs.firefox
-    pkgs.gnupg
+    pkgs.gcc
+    pkgs.git
     pkgs.glxinfo
+    pkgs.gnupg
+    pkgs.mullvad-vpn
+    pkgs.pinentry-gnome
+    pkgs.vim
   ];
 
   # Configure Backups
@@ -237,12 +239,22 @@
   # Enable Mullvad VPN
   services.mullvad-vpn.enable = true;
 
+  # TODO Enable innernet (fsfe & homenet)
+  # services.innernet = {
+  #   enable = true;
+  # };
+
   # Symlink important stuff in /etc to /persist/etc
-  environment.etc = { "mullvad-vpn".source = "/persist/etc/mullvad-vpn/"; };
+  environment.etc = {
+    "mullvad-vpn".source = "/persist/etc/mullvad-vpn/";
+    "innernet".source = "/persist/etc/innernet/";
+  };
 
   # Symlink important stuff in /var to /persist/var
-  systemd.tmpfiles.rules =
-    [ "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth" ];
+  systemd.tmpfiles.rules = [
+    "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth"
+    "L /var/lib/innernet - - - - /persist/var/lib/innernet"
+  ];
 
   # Configure SSH Daemon
   services.sshd.enable = true;
@@ -270,7 +282,7 @@
         initialHashedPassword =
           "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
         passwordFile = "/persist/passwords/lino";
-        extraGroups = [ "wheel" ];
+        extraGroups = [ "wheel" "sync" ];
         group = "users";
         uid = 1000;
         home = "/home/lino";
@@ -280,6 +292,7 @@
         ];
       };
     };
+    groups = { sync = { gid = 2000; }; };
   };
 
   # This value determines the NixOS release from which the default

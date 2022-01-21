@@ -4,22 +4,28 @@
   services = {
     syncthing = {
       enable = true;
-      overrideDevices =
-        true; # overrides any devices added or deleted through the WebUI
-      overrideFolders =
-        true; # overrides any folders added or deleted through the WebUI
-      # devices = {
-      #   "kronos" = { id = "DEVICE-ID-GOES-HERE"; };
-      #   "crius" = { id = "DEVICE-ID-GOES-HERE"; };
-      # };
+      user = "lino";
+      configDir = "/home/lino/.config/syncthing";
+      # Be declarative
+      overrideDevices = true;
+      overrideFolders = true;
+      devices = {
+        "kronos" = {
+          id =
+            "NOTUJRB-GLRQQSR-UXVA6HC-P3NUMA3-VONDKV4-3XWQAUM-6M2PF7D-QJIERAK";
+        };
+        "crius" = { id = ""; };
+      };
       folders = {
         "org" = {
           path = "/home/lino/Exocortex/org";
           devices = [ "kronos" "crius" ];
+          ignorePerms = false;
         };
         "reading" = {
           path = "/home/lino/Exocortex/reading";
           devices = [ "kronos" "crius" ];
+          ignorePerms = false;
         };
       };
     };
