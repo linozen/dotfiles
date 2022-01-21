@@ -8,11 +8,11 @@ in
   dconf.settings = {
     "apps/seahorse/listing" = {
       item-filter = "personal";
-      keyrings-selected = [ "gnupg://" ];
+      keyrings-selected = [ "secret-service:///org/freedesktop/secrets/collection/login" ];
     };
 
     "apps/seahorse/windows/key-manager" = {
-      height = 771;
+      height = 775;
       width = 1546;
     };
 
@@ -51,7 +51,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "network";
+      last-panel = "bluetooth";
     };
 
     "org/gnome/desktop/background" = {
@@ -84,6 +84,7 @@ in
       icon-theme = "Papirus-Dark";
       monospace-font-name = "Iosevka Medium 11";
       show-battery-percentage = false;
+      toolkit-accessibility = false;
     };
 
     "org/gnome/desktop/notifications" = {
@@ -158,14 +159,30 @@ in
     };
 
     "org/gnome/desktop/wm/keybindings" = {
+      activate-window-menu = [];
       close = [ "<Super>q" ];
+      move-to-workspace-1 = [ "<Shift><Alt>exclam" ];
+      move-to-workspace-2 = [ "<Shift><Alt>quotedbl" ];
+      move-to-workspace-3 = [ "<Shift><Alt>sterling" ];
+      move-to-workspace-4 = [ "<Shift><Alt>dollar" ];
+      move-to-workspace-last = [];
+      move-to-workspace-left = [ "<Shift><Super>a" ];
+      move-to-workspace-right = [ "<Shift><Super>d" ];
       switch-input-source = [];
       switch-input-source-backward = [];
+      switch-to-workspace-1 = [ "<Alt>1" ];
+      switch-to-workspace-2 = [ "<Alt>2" ];
+      switch-to-workspace-3 = [ "<Alt>3" ];
+      switch-to-workspace-4 = [ "<Alt>4" ];
+      switch-to-workspace-left = [ "<Super>a" ];
+      switch-to-workspace-right = [ "<Super>d" ];
       toggle-fullscreen = [ "<Alt>f" ];
     };
 
     "org/gnome/desktop/wm/preferences" = {
+      auto-raise = true;
       button-layout = "appmenu:minimize,maximize,close";
+      focus-mode = "sloppy";
       titlebar-font = "Rubik Medium 11";
       workspace-names = [ "Communication" "Web" ];
     };
@@ -247,7 +264,7 @@ in
       dynamic-workspaces = true;
       edge-tiling = false;
       focus-change-on-pointer-rest = true;
-      workspaces-only-on-primary = true;
+      workspaces-only-on-primary = false;
     };
 
     "org/gnome/nautilus/list-view" = {
@@ -267,6 +284,11 @@ in
       initial-size = mkTuple [ 890 550 ];
       maximized = false;
       sidebar-width = 236;
+    };
+
+    "org/gnome/nm-applet/eap/15ad66ab-46e4-433d-a77a-189100621b95" = {
+      ignore-ca-cert = false;
+      ignore-phase2-ca-cert = false;
     };
 
     "org/gnome/nm-applet/eap/c7b4fb75-644b-41d9-bb7a-df960ccd59e2" = {
@@ -303,7 +325,7 @@ in
       disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" ];
       enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" ];
       favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
-      had-bluetooth-devices-setup = false;
+      had-bluetooth-devices-setup = true;
       remember-mount-password = false;
       welcome-dialog-last-shown-version = "41.1";
     };
@@ -320,7 +342,7 @@ in
       next-entry = [];
       prev-entry = [];
       refresh-interval = 1000;
-      toggle-menu = [ "<Alt>c" ];
+      toggle-menu = [];
     };
 
     "org/gnome/shell/extensions/dash-to-dock" = {
@@ -430,27 +452,35 @@ in
       activate-layout1 = [];
       activate-layout2 = [];
       activate-layout3 = [];
-      auto-tile = [];
+      auto-tile = [ "<Alt>t" ];
       change-favorite-layout = [];
       changelog-version = 27;
-      debugging-free-rects = [];
-      debugging-show-tiled-rects = [];
+      debugging-free-rects = [ "<Alt>v" ];
+      debugging-show-tiled-rects = [ "<Alt>m" ];
       default-move-mode = "Edge Tiling";
+      dynamic-keybinding-behaviour = "Tiling State";
+      enable-advanced-experimental-features = false;
+      enable-raise-tile-group = false;
+      enable-tiling-popup = true;
       import-layout-examples = false;
+      maximize-with-gap = false;
       move-favorite-layout-mod = "Alt";
-      screen-gap = 2;
+      move-split-tiles-mod = "Alt";
+      screen-gap = 22;
       search-popup-layout = [];
-      tile-bottom-half = [ "<Super>KP_2" ];
-      tile-bottomleft-quarter = [ "<Super>KP_1" ];
-      tile-bottomright-quarter = [ "<Super>KP_3" ];
-      tile-edit-mode = [];
-      tile-left-half = [ "<Super>KP_4" ];
-      tile-maximize = [ "<Super>KP_5" ];
-      tile-right-half = [ "<Super>KP_6" ];
-      tile-top-half = [ "<Super>KP_8" ];
-      tile-topleft-quarter = [ "<Super>KP_7" ];
-      tile-topright-quarter = [ "<Super>KP_9" ];
-      toggle-tiling-popup = [];
+      tile-bottom-half = [ "<Alt>s" ];
+      tile-bottomleft-quarter = [ "<Alt>z" ];
+      tile-bottomright-quarter = [ "<Alt>c" ];
+      tile-edit-mode = [ "<Alt>space" ];
+      tile-left-half = [ "<Alt>a" ];
+      tile-maximize = [ "<Control><Alt>d" ];
+      tile-right-half = [ "<Alt>d" ];
+      tile-top-half = [ "<Alt>w" ];
+      tile-topleft-quarter = [ "<Alt>q" ];
+      tile-topright-quarter = [ "<Alt>e" ];
+      tiling-popup-all-workspace = true;
+      toggle-tiling-popup = [ "<Alt>2" ];
+      window-gap = 20;
     };
 
     "org/gnome/shell/extensions/user-theme" = {
@@ -459,6 +489,11 @@ in
 
     "org/gnome/shell/extensions/x11gestures" = {
       swipe-fingers = 4;
+    };
+
+    "org/gnome/shell/keybindings" = {
+      toggle-application-view = [];
+      toggle-overview = [];
     };
 
     "org/gnome/shell/overrides" = {
@@ -491,8 +526,10 @@ in
       settings-migrated = true;
       show-task-pane = true;
       task-list-url = "";
+      task-pane-position = 998;
       virtual-midnight = mkTuple [ 2 0 ];
-      window-position = mkTuple [ 223 259 ];
+      window-position = mkTuple [ 22 22 ];
+      window-size = mkTuple [ 1248 1358 ];
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {

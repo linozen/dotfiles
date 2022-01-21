@@ -114,7 +114,7 @@
   # Import (mostly Gnome related) dconf settings
   # TODO Use common.nix or modules?
   # See: https://nix-community.github.io/home-manager/ Section 5.3
-  imports = [ ./dconf/crius.nix ];
+  imports = [ ./dconf/kronos.nix ];
 
   # Symlink application's configuration files
   home.file = {
