@@ -36,6 +36,7 @@
     gnomeExtensions.floating-dock
     gnomeExtensions.clipboard-indicator
     gnome.gnome-tweaks
+    gnome.dconf-editor
     dconf2nix
     # Nix-related
     nix-prefetch-git
