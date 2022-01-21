@@ -34,6 +34,11 @@
           devices = [ "kronos" "crius" "mnemosyne" ];
           ignorePerms = false;
         };
+        "gtimelog" = {
+          path = "/home/lino/.local/share/gtimelog";
+          devices = [ "kronos" "crius" ];
+          ignorePerms = false;
+        };
       };
     };
   };
