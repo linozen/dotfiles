@@ -12,12 +12,13 @@
       devices = {
         "kronos" = {
           id =
-            "NOTUJRB-GLRQQSR-UXVA6HC-P3NUMA3-VONDKV4-3XWQAUM-6M2PF7D-QJIERAK";
+            "IO44XPU-U6HFEB3-K6A35SN-FSOCGS3-56SJX4M-KXVJXGS-LOAOCKI-KLJ3GQX";
         };
         "crius" = {
           id =
             "QQ6XDR3-I4DVVCN-KRR6V3X-4OTVYWY-CQLQFQ4-KBWQCXC-VVYJF7H-ZLPYSQC";
         };
+        # "mnemosyne" = { id = ""; };
       };
       folders = {
         "org" = {
