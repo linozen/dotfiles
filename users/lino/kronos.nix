@@ -38,6 +38,8 @@
     gnome.gnome-tweaks
     gnome.dconf-editor
     dconf2nix
+    # Music
+    deadbeef
     # Nix-related
     nix-prefetch-git
     # Theming
@@ -47,6 +49,7 @@
     rubik
     nerdfonts
     # Communication
+    mumble
     signal-desktop
     element-desktop
     # Secrets
@@ -77,6 +80,13 @@
     texlive.combined.scheme-medium
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
+    nodePackages.pyright
+    nodePackages.prettier
+    # SFTP
+    sshfs
+    filezilla
+    # other
+    virt-manager
   ];
 
   # TODO Setup XMPP (Dino)

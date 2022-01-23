@@ -42,6 +42,8 @@
   # Enable bluetooth
   hardware.bluetooth.enable = true;
 
+  # Enable
+
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -162,10 +164,17 @@
   qt5.enable = false;
   programs.qt5ct.enable = true;
 
-  # Enable libinput and gestures via touchegg
-  services.xserver.libinput.enable = true;
-  services.xserver.libinput.touchpad.tapping = true;
-  services.touchegg.enable = true;
+  hardware.opengl.driSupport32Bit = true;
+
+  # libvirtd
+  virtualisation.libvirtd.enable = true;
+
+  # Enable docker
+  virtualisation.docker = {
+    enable = true;
+    enableNvidia = true;
+    autoPrune.enable = true;
+  };
 
   # Install system applications
   environment.systemPackages = [
@@ -177,6 +186,7 @@
     pkgs.git
     pkgs.glxinfo
     pkgs.gnupg
+    pkgs.innernet
     pkgs.mullvad-vpn
     pkgs.pinentry-gnome
     pkgs.vim
@@ -282,7 +292,7 @@
         initialHashedPassword =
           "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
         passwordFile = "/persist/passwords/lino";
-        extraGroups = [ "wheel" "sync" ];
+        extraGroups = [ "wheel" "docker" "qemu-libvirtd" "libvirtd" ];
         group = "users";
         uid = 1000;
         home = "/home/lino";
@@ -292,7 +302,6 @@
         ];
       };
     };
-    groups = { sync = { gid = 2000; }; };
   };
 
   # This value determines the NixOS release from which the default
