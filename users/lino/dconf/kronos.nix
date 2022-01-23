@@ -17,8 +17,8 @@ in
     };
 
     "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/gnome/shell/extensions/just-perfection/accessibility-menu";
-      saved-view = "/org/gnome/shell/extensions/";
+      saved-pathbar-path = "/org/freedesktop/tracker/miner/files/";
+      saved-view = "/org/";
       window-height = 500;
       window-is-maximized = false;
       window-width = 1067;
@@ -36,6 +36,12 @@ in
       temperature-unit = "centigrade";
     };
 
+    "org/gnome/Music" = {
+      window-maximized = false;
+      window-position = [ 2875 209 ];
+      window-size = [ 1556 948 ];
+    };
+
     "org/gnome/Weather" = {
       locations = "[<(uint32 2, <('Berlin-Schoenefeld', 'EDDB', false, [(0.91426163401859872, 0.23591034304566436)], @a(dd) [])>)>]";
     };
@@ -43,6 +49,22 @@ in
     "org/gnome/baobab/ui" = {
       window-size = mkTuple [ 960 600 ];
       window-state = 87168;
+    };
+
+    "org/gnome/calculator" = {
+      accuracy = 9;
+      angle-units = "degrees";
+      base = 10;
+      button-mode = "basic";
+      number-format = "automatic";
+      show-thousands = false;
+      show-zeroes = false;
+      source-currency = "";
+      source-units = "degree";
+      target-currency = "";
+      target-units = "radian";
+      window-position = mkTuple [ 2608 72 ];
+      word-size = 64;
     };
 
     "org/gnome/calendar" = {
@@ -59,7 +81,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "keyboard";
+      last-panel = "sound";
     };
 
     "org/gnome/desktop/background" = {
@@ -96,7 +118,7 @@ in
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" ];
+      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" ];
       show-banners = false;
     };
 
@@ -110,6 +132,10 @@ in
 
     "org/gnome/desktop/notifications/application/emacsclient" = {
       application-id = "emacsclient.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/filezilla" = {
+      application-id = "filezilla.desktop";
     };
 
     "org/gnome/desktop/notifications/application/firefox" = {
@@ -130,6 +156,10 @@ in
 
     "org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify" = {
       application-id = "org.gnome.Evolution-alarm-notify.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-music" = {
+      application-id = "org.gnome.Music.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
@@ -166,24 +196,29 @@ in
       sort-order = [ "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calculator.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.clocks.desktop" "org.gnome.Calendar.desktop" "org.gnome.Weather.desktop" "org.gnome.Contacts.desktop" ];
     };
 
+    "org/gnome/desktop/sound" = {
+      event-sounds = true;
+      theme-name = "__custom";
+    };
+
     "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
       close = [ "<Super>q" ];
       cycle-windows = [];
       cycle-windows-backward = [];
-      move-to-workspace-1 = [ "<Shift><Alt>exclam" ];
-      move-to-workspace-2 = [ "<Shift><Alt>quotedbl" ];
-      move-to-workspace-3 = [ "<Shift><Alt>sterling" ];
-      move-to-workspace-4 = [ "<Shift><Alt>dollar" ];
+      move-to-workspace-1 = [ "<Shift><Super>exclam" ];
+      move-to-workspace-2 = [ "<Shift><Super>quotedbl" ];
+      move-to-workspace-3 = [ "<Shift><Super>sterling" ];
+      move-to-workspace-4 = [ "<Shift><Super>dollar" ];
       move-to-workspace-last = [];
       move-to-workspace-left = [ "<Shift><Super>a" ];
       move-to-workspace-right = [ "<Shift><Super>d" ];
       switch-input-source = [];
       switch-input-source-backward = [];
-      switch-to-workspace-1 = [ "<Alt>1" ];
-      switch-to-workspace-2 = [ "<Alt>2" ];
-      switch-to-workspace-3 = [ "<Alt>3" ];
-      switch-to-workspace-4 = [ "<Alt>4" ];
+      switch-to-workspace-1 = [ "<Super>1" ];
+      switch-to-workspace-2 = [ "<Super>2" ];
+      switch-to-workspace-3 = [ "<Super>3" ];
+      switch-to-workspace-4 = [ "<Super>4" ];
       switch-to-workspace-left = [ "<Super>a" ];
       switch-to-workspace-right = [ "<Super>d" ];
       toggle-fullscreen = [ "<Alt>f" ];
@@ -255,7 +290,7 @@ in
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 1053 765 ];
+      window-state = mkTuple [ 700 500 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -291,7 +326,7 @@ in
     };
 
     "org/gnome/nautilus/window-state" = {
-      initial-size = mkTuple [ 890 550 ];
+      initial-size = mkTuple [ 1515 677 ];
       maximized = false;
       sidebar-width = 236;
     };
@@ -442,7 +477,7 @@ in
       dynamic-keybinding-behaviour = "Tiling State";
       enable-advanced-experimental-features = false;
       enable-raise-tile-group = false;
-      enable-tiling-popup = true;
+      enable-tiling-popup = false;
       import-layout-examples = false;
       maximize-with-gap = false;
       move-favorite-layout-mod = "Alt";
@@ -460,7 +495,7 @@ in
       tile-topleft-quarter = [ "<Alt>q" ];
       tile-topright-quarter = [ "<Alt>e" ];
       tiling-popup-all-workspace = true;
-      toggle-tiling-popup = [ "<Alt>2" ];
+      toggle-tiling-popup = [];
       window-gap = 20;
     };
 
@@ -513,7 +548,7 @@ in
       task-list-url = "";
       task-pane-position = 998;
       virtual-midnight = mkTuple [ 2 0 ];
-      window-position = mkTuple [ 2619 88 ];
+      window-position = mkTuple [ 176 41 ];
       window-size = mkTuple [ 1248 1358 ];
     };
 
@@ -538,7 +573,7 @@ in
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 689 70 ];
+      window-position = mkTuple [ 2907 250 ];
       window-size = mkTuple [ 1231 902 ];
     };
 
