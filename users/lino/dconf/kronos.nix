@@ -24,6 +24,10 @@ in
       window-width = 1067;
     };
 
+    "org/gnome/Disks" = {
+      image-dir-uri = "file:///home/lino/Downloads";
+    };
+
     "org/gnome/Fractal" = {
       main-window-state-height = 644;
       main-window-state-maximized = false;
@@ -290,7 +294,7 @@ in
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 700 500 ];
+      window-state = mkTuple [ 1360 500 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -573,8 +577,47 @@ in
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 2907 250 ];
+      window-position = mkTuple [ 2894 250 ];
       window-size = mkTuple [ 1231 902 ];
+    };
+
+    "org/virt-manager/virt-manager" = {
+      manager-window-height = 550;
+      manager-window-width = 550;
+    };
+
+    "org/virt-manager/virt-manager/confirm" = {
+      forcepoweroff = true;
+    };
+
+    "org/virt-manager/virt-manager/connections" = {
+      autoconnect = [ "qemu:///system" ];
+      uris = [ "qemu:///system" ];
+    };
+
+    "org/virt-manager/virt-manager/conns/qemu:system" = {
+      window-size = mkTuple [ 816 729 ];
+    };
+
+    "org/virt-manager/virt-manager/details" = {
+      show-toolbar = true;
+    };
+
+    "org/virt-manager/virt-manager/vmlist-fields" = {
+      disk-usage = false;
+      network-traffic = false;
+    };
+
+    "org/virt-manager/virt-manager/vms/474ecb6eb1fa4bf48060ef2a8abac31d" = {
+      autoconnect = 1;
+      scaling = 1;
+      vm-window-size = mkTuple [ 1024 832 ];
+    };
+
+    "org/virt-manager/virt-manager/vms/524c09a233c2433b9dffbdb91456554b" = {
+      autoconnect = 1;
+      scaling = 1;
+      vm-window-size = mkTuple [ 1024 832 ];
     };
 
   };

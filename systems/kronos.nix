@@ -267,10 +267,10 @@
   ];
 
   # Configure SSH Daemon
-  services.sshd.enable = true;
   services.openssh = {
     enable = true;
     openFirewall = true;
+    passwordAuthentication = false;
   };
 
   # Configure users declaratively
