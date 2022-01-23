@@ -204,10 +204,20 @@ in {
   # See: https://christine.website/blog/borg-backup-2021-01-09
   # First, make BorgBase repo a known host
   programs.ssh.knownHosts = {
-    borgbase = {
-      hostNames = [ "oxti13j3@oxti13j3.repo.borgbase.com" ];
+    borgbaseEd25519 = {
+      hostNames = [ "oxti13j3.repo.borgbase.com" ];
       publicKey =
         "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMS3185JdDy7ffnr0nLWqVy8FaAQeVh1QYUSiNpW5ESq";
+    };
+    borgbaseRsa = {
+      hostNames = [ "oxti13j3.repo.borgbase.com" ];
+      publicKey =
+        "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCwHsO5g7kAEpqcK4bpHCUKYV1cKCUNwVEVsDQyfj7N8L92E21n+aEhIX2Nh/kFs1W9D/pgsWQBAbco9e/ORuagHrO8hUQtbda5Z31PAo4eipwP17VQr5rF3seaJJNFV72v89PGwMOWQwvoJte+yngC6PYGKJ+w63SRtflihAmf4xa5Tci/f6jbX6t32m2F3bnephVzQO6anGXvGPR8QYQXzSu/27+LaKnLd2Kugb1Ytbo0+6kioa60HWejIZ/mCrCHXYpi0jAllaYEuAsTqFWf/OFUHrKWwRAJD0TV43O1++vLlxY85oQxIgc4oUbm93dXmDBssrTnqqq2jqonteUr";
+    };
+    borgbaseEdsaSha2Nistp256 = {
+      hostNames = [ "oxti13j3.repo.borgbase.com" ];
+      publicKey =
+        "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOstKfBbwVOYQh3J7X4nzd6/VYgLfaucP9z5n4cpSzcZAOKGh6jH8e1mhQ4YupthlsdPKyFFZ3pKo4mTaRRuiJo=";
     };
   };
   services.borgbackup.jobs."borgbase" = {
