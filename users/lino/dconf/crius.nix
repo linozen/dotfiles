@@ -16,6 +16,14 @@ in
       width = 1546;
     };
 
+    "ca/desrt/dconf-editor" = {
+      saved-pathbar-path = "";
+      saved-view = "/org/gnome/";
+      window-height = 500;
+      window-is-maximized = true;
+      window-width = 540;
+    };
+
     "org/gnome/Fractal" = {
       main-window-state-height = 644;
       main-window-state-maximized = false;
