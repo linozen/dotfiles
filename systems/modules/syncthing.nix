@@ -5,6 +5,7 @@
     syncthing = {
       enable = true;
       user = "lino";
+      # TODO Insert key.pem for full declarativeness
       configDir = "/home/lino/.config/syncthing";
       # Be declarative
       overrideDevices = true;
