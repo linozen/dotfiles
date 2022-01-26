@@ -87,7 +87,7 @@
   networking.hostName = "kronos";
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-  networking.interfaces.enp0s5.useDHCP = true;
+  # networking.interfaces.enp0s5.useDHCP = false;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
