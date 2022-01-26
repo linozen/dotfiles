@@ -97,10 +97,10 @@
   services.xserver.displayManager = {
     gdm.enable = true;
     gdm.wayland = false;
-    autoLogin = {
-      enable = true;
-      user = "lino";
-    };
+    # autoLogin = {
+    #   enable = true;
+    #   user = "lino";
+    # };
   };
 
   # See: https://github.com/NixOS/nixpkgs/issues/103746
