@@ -8,11 +8,11 @@ in
   dconf.settings = {
     "apps/seahorse/listing" = {
       item-filter = "personal";
-      keyrings-selected = [ "secret-service:///org/freedesktop/secrets/collection/login" ];
+      keyrings-selected = [ "gnupg://" ];
     };
 
     "apps/seahorse/windows/key-manager" = {
-      height = 775;
+      height = 777;
       width = 1546;
     };
 
@@ -72,10 +72,10 @@ in
     };
 
     "org/gnome/calendar" = {
-      active-view = "week";
-      window-maximized = true;
-      window-position = mkTuple [ 0 0 ];
-      window-size = mkTuple [ 1920 1080 ];
+      active-view = "month";
+      window-maximized = false;
+      window-position = mkTuple [ 774 172 ];
+      window-size = mkTuple [ 1613 1005 ];
     };
 
     "org/gnome/clocks/state/window" = {
@@ -122,7 +122,7 @@ in
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" ];
+      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" "zotero-5-0-96-3" ];
       show-banners = false;
     };
 
@@ -172,6 +172,10 @@ in
 
     "org/gnome/desktop/notifications/application/signal-desktop" = {
       application-id = "signal-desktop.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/zotero-5-0-96-3" = {
+      application-id = "zotero-5.0.96.3.desktop";
     };
 
     "org/gnome/desktop/peripherals/keyboard" = {
@@ -247,8 +251,12 @@ in
       window-size = mkTuple [ 1024 768 ];
     };
 
+    "org/gnome/evince" = {
+      document-directory = "@ms 'file:///home/lino/Source/sr.ht/ma-thesis'";
+    };
+
     "org/gnome/evince/default" = {
-      window-ratio = mkTuple [ 1.006524 0.704501 ];
+      window-ratio = mkTuple [ 2.0392156862745097 1.7626262626262625 ];
     };
 
     "org/gnome/evolution-data-server" = {
@@ -266,7 +274,73 @@ in
     };
 
     "org/gnome/evolution" = {
-      default-calendar = "b48445c2d2e56b9e16d9776067f24730aa0e4d97";
+      default-calendar = "ac703ab77447f05e7ef114a9c50d4a4379c3ce9b";
+      version = "3.42.1";
+    };
+
+    "org/gnome/evolution/bogofilter" = {
+      command = "";
+      utf8-for-spam-filter = true;
+    };
+
+    "org/gnome/evolution/calendar" = {
+      allow-direct-summary-edit = false;
+      confirm-purge = true;
+      date-navigator-pane-position = 159;
+      prefer-new-item = "";
+      primary-calendar = "88cef9ccac7c28f805e268ff50acfeabec41d4b5";
+      primary-memos = "system-memo-list";
+      primary-tasks = "system-task-list";
+      recur-events-italic = false;
+      show-tag-vpane = true;
+      tag-vpane-position = 1.745e-3;
+      time-divisions = 30;
+      week-start-day-name = "monday";
+      work-day-friday = true;
+      work-day-monday = true;
+      work-day-saturday = false;
+      work-day-sunday = false;
+      work-day-thursday = true;
+      work-day-tuesday = true;
+      work-day-wednesday = true;
+    };
+
+    "org/gnome/evolution/mail" = {
+      browser-close-on-reply-policy = "ask";
+      forward-style-name = "attached";
+      image-loading-policy = "never";
+      junk-check-incoming = true;
+      paned-size = 1138235;
+      prompt-check-if-default-mailer = false;
+      reply-style-name = "quoted";
+      search-gravatar-for-photo = false;
+      show-startup-wizard = false;
+      to-do-bar-width = 1186788;
+    };
+
+    "org/gnome/evolution/shell" = {
+      attachment-view = 0;
+      buttons-visible = true;
+      default-component-id = "calendar";
+      folder-bar-width = 252;
+      menubar-visible = true;
+      sidebar-visible = true;
+      statusbar-visible = true;
+      toolbar-visible = true;
+    };
+
+    "org/gnome/evolution/shell/window" = {
+      height = 1137;
+      maximized = false;
+      width = 2012;
+      x = 2727;
+      y = 163;
+    };
+
+    "org/gnome/evolution/spamassassin" = {
+      command = "";
+      learn-command = "";
+      local-only = true;
     };
 
     "org/gnome/file-roller/dialogs/extract" = {
@@ -288,13 +362,19 @@ in
       window-width = 1038;
     };
 
+    "org/gnome/gnome-screenshot" = {
+      delay = 0;
+      include-pointer = false;
+      last-save-directory = "file:///home/lino/Pictures";
+    };
+
     "org/gnome/gnome-system-monitor" = {
       current-tab = "resources";
       maximized = false;
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 1360 500 ];
+      window-state = mkTuple [ 700 500 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -332,7 +412,7 @@ in
     "org/gnome/nautilus/window-state" = {
       initial-size = mkTuple [ 1515 677 ];
       maximized = false;
-      sidebar-width = 236;
+      sidebar-width = 238;
     };
 
     "org/gnome/nm-applet/eap/15ad66ab-46e4-433d-a77a-189100621b95" = {
@@ -550,10 +630,10 @@ in
       settings-migrated = true;
       show-task-pane = true;
       task-list-url = "";
-      task-pane-position = 998;
+      task-pane-position = 603;
       virtual-midnight = mkTuple [ 2 0 ];
-      window-position = mkTuple [ 176 41 ];
-      window-size = mkTuple [ 1248 1358 ];
+      window-position = mkTuple [ 1224 248 ];
+      window-size = mkTuple [ 853 848 ];
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
@@ -562,8 +642,8 @@ in
     };
 
     "org/gtk/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.368627 0.505882 ]) (mkTuple [ 0.0 0.2 ]) (mkTuple [ 0.921569 0.796078 ]) (mkTuple [ 0.839216 0.705882 ]) (mkTuple [ 0.745098 0.807843 ]) (mkTuple [ 0.815686 0.529412 ]) (mkTuple [ 1.0 0.0 ]) (mkTuple [ 0.639216 0.745098 ]) ];
-      selected-color = mkTuple [ true 0.368627 ];
+      custom-colors = [ (mkTuple [ 0.560784 0.737255 ]) (mkTuple [ 0.639216 0.745098 ]) (mkTuple [ 0.505882 0.631373 ]) (mkTuple [ 0.74902 0.380392 ]) (mkTuple [ 0.807843 0.905882 ]) (mkTuple [ 0.705882 0.556863 ]) (mkTuple [ 0.839216 0.705882 ]) (mkTuple [ 0.533333 0.752941 ]) ];
+      selected-color = mkTuple [ true 0.639216 ];
     };
 
     "org/gtk/settings/file-chooser" = {
@@ -577,7 +657,7 @@ in
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 2894 250 ];
+      window-position = mkTuple [ 1113 250 ];
       window-size = mkTuple [ 1231 902 ];
     };
 

@@ -77,7 +77,7 @@
     python39Packages.pywal
     (aspellWithDicts (ds: with ds; [ de en en-computers en-science ]))
     sqlite
-    texlive.combined.scheme-medium
+    texlive.combined.scheme-full
     nodePackages.typescript-language-server
     nodePackages.bash-language-server
     nodePackages.pyright
@@ -87,6 +87,13 @@
     filezilla
     # other
     virt-manager
+    quickemu
+    # Calendar Sync
+    evolution
+    # Office
+    libreoffice-fresh
+    zip
+    unzip
   ];
 
   # TODO Setup XMPP (Dino)
