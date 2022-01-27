@@ -8,17 +8,17 @@ in
   dconf.settings = {
     "apps/seahorse/listing" = {
       item-filter = "personal";
-      keyrings-selected = [ "gnupg://" ];
+      keyrings-selected = [ "secret-service:///org/freedesktop/secrets/collection/login" ];
     };
 
     "apps/seahorse/windows/key-manager" = {
-      height = 777;
-      width = 1546;
+      height = 1362;
+      width = 1248;
     };
 
     "ca/desrt/dconf-editor" = {
-      saved-pathbar-path = "/org/freedesktop/tracker/miner/files/";
-      saved-view = "/org/";
+      saved-pathbar-path = "/org/gnome/evince/";
+      saved-view = "/org/gnome/evince/";
       window-height = 500;
       window-is-maximized = false;
       window-width = 1067;
@@ -72,9 +72,9 @@ in
     };
 
     "org/gnome/calendar" = {
-      active-view = "month";
+      active-view = "week";
       window-maximized = false;
-      window-position = mkTuple [ 774 172 ];
+      window-position = mkTuple [ 2980 150 ];
       window-size = mkTuple [ 1613 1005 ];
     };
 
@@ -85,7 +85,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "sound";
+      last-panel = "printers";
     };
 
     "org/gnome/desktop/background" = {
@@ -251,12 +251,8 @@ in
       window-size = mkTuple [ 1024 768 ];
     };
 
-    "org/gnome/evince" = {
-      document-directory = "@ms 'file:///home/lino/Source/sr.ht/ma-thesis'";
-    };
-
     "org/gnome/evince/default" = {
-      window-ratio = mkTuple [ 2.0392156862745097 1.7626262626262625 ];
+      window-ratio = mkTuple [ 2.039216 1.762626 ];
     };
 
     "org/gnome/evolution-data-server" = {
@@ -459,7 +455,7 @@ in
       disable-user-extensions = false;
       disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" "syncthingicon@jay.strict@posteo.de" ];
       enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" "syncthing@gnome.2nv2u.com" ];
-      favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
+      favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "signal-desktop.desktop" "telegramdesktop.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
       had-bluetooth-devices-setup = true;
       remember-mount-password = false;
       welcome-dialog-last-shown-version = "41.1";
@@ -642,8 +638,8 @@ in
     };
 
     "org/gtk/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.560784 0.737255 ]) (mkTuple [ 0.639216 0.745098 ]) (mkTuple [ 0.505882 0.631373 ]) (mkTuple [ 0.74902 0.380392 ]) (mkTuple [ 0.807843 0.905882 ]) (mkTuple [ 0.705882 0.556863 ]) (mkTuple [ 0.839216 0.705882 ]) (mkTuple [ 0.533333 0.752941 ]) ];
-      selected-color = mkTuple [ true 0.639216 ];
+      custom-colors = [ (mkTuple [ 0.807843 0.807843 ]) (mkTuple [ 0.92549 0.937255 ]) (mkTuple [ 0.231373 0.258824 ]) (mkTuple [ 0.262745 0.298039 ]) (mkTuple [ 0.262745 0.298039 ]) (mkTuple [ 0.196078 0.196078 ]) ];
+      selected-color = mkTuple [ true 1.0 ];
     };
 
     "org/gtk/settings/file-chooser" = {
@@ -657,7 +653,7 @@ in
       sort-directories-first = false;
       sort-order = "ascending";
       type-format = "category";
-      window-position = mkTuple [ 1113 250 ];
+      window-position = mkTuple [ 3224 265 ];
       window-size = mkTuple [ 1231 902 ];
     };
 

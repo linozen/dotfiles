@@ -50,6 +50,7 @@
     nerdfonts
     # Communication
     mumble
+    tdesktop
     signal-desktop
     element-desktop
     # Secrets
@@ -83,7 +84,6 @@
     nodePackages.pyright
     nodePackages.prettier
     # SFTP
-    sshfs
     filezilla
     # other
     virt-manager
