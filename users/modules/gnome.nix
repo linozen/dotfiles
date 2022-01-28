@@ -16,13 +16,11 @@
   ];
 
   imports = [
-    # /org/gnome/desktop/*
+    # General desktop settings
     ./dconf/desktop.nix
-    # /org/gnome/shell/keybindings
-    ./dconf/shell-keybindings.nix
-    # /org/gnome/shell/extensions/*
+    # Settings for specific extensions
     ./dconf/ext-clipboard-indicator.nix
-    ./dconf/ext-floating-dock.nix
+    ./dconf/ext-dash-to-dock.nix
     ./dconf/ext-gnome-ui-tune.nix
     ./dconf/ext-just-perfection.nix
     ./dconf/ext-tiling-assistant.nix
