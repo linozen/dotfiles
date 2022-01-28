@@ -78,6 +78,10 @@ in
       window-size = mkTuple [ 1613 1005 ];
     };
 
+    "org/gnome/clocks" = {
+      timers = "@aa{sv} []";
+    };
+
     "org/gnome/clocks/state/window" = {
       panel-id = "world";
       size = mkTuple [ 758 690 ];
@@ -85,7 +89,7 @@ in
     };
 
     "org/gnome/control-center" = {
-      last-panel = "printers";
+      last-panel = "info-overview";
     };
 
     "org/gnome/desktop/background" = {
@@ -252,7 +256,7 @@ in
     };
 
     "org/gnome/evince/default" = {
-      window-ratio = mkTuple [ 2.039216 1.762626 ];
+      window-ratio = mkTuple [ 2.038655 1.710214 ];
     };
 
     "org/gnome/evolution-data-server" = {
@@ -370,7 +374,7 @@ in
       network-total-in-bits = false;
       show-dependencies = false;
       show-whose-processes = "user";
-      window-state = mkTuple [ 700 500 ];
+      window-state = mkTuple [ 1355 820 ];
     };
 
     "org/gnome/gnome-system-monitor/disktreenew" = {
@@ -380,7 +384,7 @@ in
 
     "org/gnome/gnome-system-monitor/proctree" = {
       columns-order = [ 0 1 2 3 4 6 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 ];
-      sort-col = 8;
+      sort-col = 15;
       sort-order = 0;
     };
 
@@ -421,6 +425,16 @@ in
       ignore-phase2-ca-cert = false;
     };
 
+    "org/gnome/pomodoro/state" = {
+      timer-date = "2022-01-27T23:47:19+0000";
+      timer-elapsed = 0.0;
+      timer-paused = false;
+      timer-score = 0.0;
+      timer-state = "pomodoro";
+      timer-state-date = "2022-01-27T23:32:01+0000";
+      timer-state-duration = 1500.0;
+    };
+
     "org/gnome/settings-daemon/plugins/color" = {
       night-light-enabled = true;
       night-light-schedule-automatic = false;
@@ -453,7 +467,7 @@ in
     "org/gnome/shell" = {
       command-history = [ "r" ];
       disable-user-extensions = false;
-      disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" "syncthingicon@jay.strict@posteo.de" ];
+      disabled-extensions = [ "native-window-placement@gnome-shell-extensions.gcampax.github.com" "drive-menu@gnome-shell-extensions.gcampax.github.com" "places-menu@gnome-shell-extensions.gcampax.github.com" "just-perfection-desktop@just-perfection" "dash-to-dock@micxgx.gmail.com" "workspace-indicator@gnome-shell-extensions.gcampax.github.com" "system-monitor@paradoxxx.zero.gmail.com" "syncthingicon@jay.strict@posteo.de" "forge@jmmaranan.com" ];
       enabled-extensions = [ "x11gestures@joseexposito.github.io" "user-theme@gnome-shell-extensions.gcampax.github.com" "tiling-assistant@leleat-on-github" "mullvadindicator@pobega.github.com" "hidetopbar@mathieu.bidon.ca" "gnome-ui-tune@itstime.tech" "floating-dock@nandoferreira_prof@hotmail.com" "clipboard-indicator@tudmotu.com" "syncthing@gnome.2nv2u.com" ];
       favorite-apps = [ "emacsclient.desktop" "zotero-5.0.96.3.desktop" "firefox.desktop" "Alacritty.desktop" "element-desktop.desktop" "bitwarden.desktop" "org.gnome.Nautilus.desktop" "signal-desktop.desktop" "telegramdesktop.desktop" "org.gnome.tweaks.desktop" "org.gnome.Calendar.desktop" ];
       had-bluetooth-devices-setup = true;
@@ -502,6 +516,24 @@ in
       show-show-apps-button = false;
       show-trash = false;
       show-windows-preview = false;
+    };
+
+    "org/gnome/shell/extensions/executor" = {
+      center-active = false;
+      center-commands-json = "'{"commands":[{"isActive":true,"command":"echo Executor works","interval":5,"uuid":"12169a82-5d60-44fb-95e8-6f46b00ac482"}]}'";
+      click-on-output-active = true;
+      left-active = true;
+      left-commands-json = "'{"commands":[]}'";
+      left-index = 0;
+      location = 0;
+      right-active = false;
+    };
+
+    "org/gnome/shell/extensions/forge" = {
+      css-updated = "1643327852552";
+      window-gap-hidden-on-single = true;
+      window-gap-size = "uint32 4";
+      window-gap-size-increment = "uint32 1";
     };
 
     "org/gnome/shell/extensions/gnome-ui-tune" = {
@@ -579,6 +611,15 @@ in
       window-gap = 20;
     };
 
+    "org/gnome/shell/extensions/timepp" = {
+      alarms-sound-file-path = "file:///home/lino/.nix-profile/share/gnome-shell/extensions/timepp@zagortenay333/data/sounds/beeps.ogg";
+      pomodoro-sound-file-path-long-break = "file:///home/lino/.nix-profile/share/gnome-shell/extensions/timepp@zagortenay333/data/sounds/beeps.ogg";
+      pomodoro-sound-file-path-pomo = "file:///home/lino/.nix-profile/share/gnome-shell/extensions/timepp@zagortenay333/data/sounds/beeps.ogg";
+      pomodoro-sound-file-path-short-break = "file:///home/lino/.nix-profile/share/gnome-shell/extensions/timepp@zagortenay333/data/sounds/beeps.ogg";
+      timer-sound-file-path = "file:///home/lino/.nix-profile/share/gnome-shell/extensions/timepp@zagortenay333/data/sounds/beeps.ogg";
+      unicon-mode = true;
+    };
+
     "org/gnome/shell/extensions/user-theme" = {
       name = "Nordic-darker";
     };
@@ -633,8 +674,8 @@ in
     };
 
     "org/gtk/gtk4/settings/color-chooser" = {
-      custom-colors = [ (mkTuple [ 0.0 0.0 ]) (mkTuple [ 1.0 1.0 ]) ];
-      selected-color = mkTuple [ true 0.0 ];
+      custom-colors = [ (mkTuple [ 6.6667e-2 0.780392 ]) (mkTuple [ 0.968627 0.635294 ]) (mkTuple [ 1.0 0.964706 ]) (mkTuple [ 0.705882 0.654902 ]) (mkTuple [ 0.92549 0.368627 ]) ];
+      selected-color = mkTuple [ true 6.6667e-2 ];
     };
 
     "org/gtk/settings/color-chooser" = {
@@ -649,9 +690,9 @@ in
       show-size-column = true;
       show-type-column = true;
       sidebar-width = 180;
-      sort-column = "name";
+      sort-column = "modified";
       sort-directories-first = false;
-      sort-order = "ascending";
+      sort-order = "descending";
       type-format = "category";
       window-position = mkTuple [ 3224 265 ];
       window-size = mkTuple [ 1231 902 ];

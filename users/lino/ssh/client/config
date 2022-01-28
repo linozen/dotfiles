@@ -1,25 +1,23 @@
+# -- Forges ---
+host git.sr.ht
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
+
+host github.com
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
+
+host git.fsfe.org
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
+
 # -- Personal ---
 # TODO Refactor personal infrastructure on NixOS
+host syno
+     hostname 192.168.178.11
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
+
 host containers
      hostname swartz-containers.sehn.dev
      user deployr
      port 64299
-     identityfile ~/.ssh/legacy/t15_id_ed25519
-
-host gitea
-     hostname torvalds-gitea.sehn.dev
-     user deployr
-     port 64299
-     identityfile ~/.ssh/legacy/t15_id_ed25519
-
-host drone
-     hostname torvalds-drone.sehn.dev
-     user deployr
-     port 64299
-     identityfile ~/.ssh/legacy/t15_id_ed25519
-
-host git.sehn.dev
-     port 64300
      identityfile ~/.ssh/legacy/t15_id_ed25519
 
 host seedhost

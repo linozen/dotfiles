@@ -16,8 +16,15 @@
   # changes in each release.
   home.stateVersion = "21.11";
 
+  imports = [
+    # Gnome
+    ../modules/gnome.nix
+  ];
+
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Emacs overlay
   nixpkgs.overlays = [
     (import (builtins.fetchGit {
       url = "https://github.com/nix-community/emacs-overlay.git";
@@ -25,19 +32,9 @@
       rev = "7b8d3f12dc35a1dbf93a2a6be30d9e6b157ba17e";
     }))
   ];
+
   # Install user applications
   home.packages = with pkgs; [
-    # Gnome-related
-    gnomeExtensions.x11-gestures
-    gnomeExtensions.tiling-assistant
-    gnomeExtensions.gnome-40-ui-improvements
-    gnomeExtensions.mullvad-indicator
-    gnomeExtensions.hide-top-bar
-    gnomeExtensions.floating-dock
-    gnomeExtensions.clipboard-indicator
-    gnome.gnome-tweaks
-    gnome.dconf-editor
-    dconf2nix
     # Music
     deadbeef
     # Nix-related
@@ -128,11 +125,6 @@
       }
     ];
   };
-
-  # Import (mostly Gnome related) dconf settings
-  # TODO Use common.nix or modules?
-  # See: https://nix-community.github.io/home-manager/ Section 5.3
-  imports = [ ./dconf/kronos.nix ];
 
   # Symlink application's configuration files
   home.file = {
