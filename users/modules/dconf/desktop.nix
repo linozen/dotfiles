@@ -40,7 +40,7 @@ in
     };
 
     "org/gnome/desktop/notifications" = {
-      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" "zotero-5-0-96-3" ];
+      application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" "zotero-5-0-96-3" "org-gnome-evince" "ca-desrt-dconf-editor" ];
       show-banners = false;
     };
 
@@ -78,6 +78,10 @@ in
 
     "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
+    };
+
+    "org/gnome/desktop/notifications/application/org-gnome-evince" = {
+      application-id = "org.gnome.Evince.desktop";
     };
 
     "org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify" = {
