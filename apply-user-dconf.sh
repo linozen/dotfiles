@@ -6,6 +6,10 @@ dconf dump /org/gnome/desktop/ | \
     dconf2nix -r /org/gnome/desktop > \
     ./users/modules/dconf/desktop.nix
 
+dconf dump /org/gnome/settings-daemon/plugins/media-keys/ | \
+    dconf2nix -r /org/gnome/settings-daemon/plugins/media-keys/ > \
+    ./users/modules/dconf/media-keys.nix
+
 dconf dump /org/gnome/shell/extensions/clipboard-indicator/ | \
     dconf2nix -r /org/gnome/shell/extensions/clipboard-indicator > \
     ./users/modules/dconf/ext-clipboard-indicator.nix

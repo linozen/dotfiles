@@ -16,8 +16,9 @@
   ];
 
   imports = [
-    # General desktop settings
+    # General settings (especially shortcuts)
     ./dconf/desktop.nix
+    ./dconf/media-keys.nix
     # Settings for specific extensions
     ./dconf/ext-clipboard-indicator.nix
     ./dconf/ext-dash-to-dock.nix
