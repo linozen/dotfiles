@@ -6,7 +6,7 @@ let
 in
 {
   dconf.settings = {
-    "" = {
+    "org/gnome/shell/extensions/tiling-assistant" = {
       activate-layout0 = [];
       activate-layout1 = [];
       activate-layout2 = [];

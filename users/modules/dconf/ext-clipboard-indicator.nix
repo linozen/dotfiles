@@ -6,7 +6,7 @@ let
 in
 {
   dconf.settings = {
-    "" = {
+    "org/gnome/shell/extensions/clipboard-indicator" = {
       clear-history = [];
       disable-down-arrow = true;
       display-mode = 0;

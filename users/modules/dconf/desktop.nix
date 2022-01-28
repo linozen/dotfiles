@@ -6,7 +6,7 @@ let
 in
 {
   dconf.settings = {
-    "background" = {
+    "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
       picture-uri = "file:///home/lino/.dotfiles/wallpaper.png";
@@ -14,17 +14,17 @@ in
       secondary-color = "#000000";
     };
 
-    "calendar" = {
+    "org/gnome/desktop/calendar" = {
       show-weekdate = false;
     };
 
-    "input-sources" = {
+    "org/gnome/desktop/input-sources" = {
       per-window = false;
       sources = [ (mkTuple [ "xkb" "gb" ]) ];
       xkb-options = [ "terminate:ctrl_alt_bksp" "caps:swapescape" "keypad:atm" "compose:ralt" ];
     };
 
-    "interface" = {
+    "org/gnome/desktop/interface" = {
       cursor-theme = "Adwaita";
       document-font-name = "Rubik 11";
       enable-animations = true;
@@ -39,81 +39,81 @@ in
       toolkit-accessibility = false;
     };
 
-    "notifications" = {
+    "org/gnome/desktop/notifications" = {
       application-children = [ "gnome-power-panel" "alacritty" "firefox" "org-gnome-nautilus" "element-desktop" "signal-desktop" "emacsclient" "gnome-control-center" "org-gnome-evolution-alarm-notify" "filezilla" "zotero-5-0-96-3" ];
       show-banners = false;
     };
 
-    "notifications/application/alacritty" = {
+    "org/gnome/desktop/notifications/application/alacritty" = {
       application-id = "Alacritty.desktop";
     };
 
-    "notifications/application/ca-desrt-dconf-editor" = {
+    "org/gnome/desktop/notifications/application/ca-desrt-dconf-editor" = {
       application-id = "ca.desrt.dconf-editor.desktop";
     };
 
-    "notifications/application/element-desktop" = {
+    "org/gnome/desktop/notifications/application/element-desktop" = {
       application-id = "element-desktop.desktop";
     };
 
-    "notifications/application/emacsclient" = {
+    "org/gnome/desktop/notifications/application/emacsclient" = {
       application-id = "emacsclient.desktop";
     };
 
-    "notifications/application/filezilla" = {
+    "org/gnome/desktop/notifications/application/filezilla" = {
       application-id = "filezilla.desktop";
     };
 
-    "notifications/application/firefox" = {
+    "org/gnome/desktop/notifications/application/firefox" = {
       application-id = "firefox.desktop";
     };
 
-    "notifications/application/gnome-control-center" = {
+    "org/gnome/desktop/notifications/application/gnome-control-center" = {
       application-id = "gnome-control-center.desktop";
     };
 
-    "notifications/application/gnome-network-panel" = {
+    "org/gnome/desktop/notifications/application/gnome-network-panel" = {
       application-id = "gnome-network-panel.desktop";
     };
 
-    "notifications/application/gnome-power-panel" = {
+    "org/gnome/desktop/notifications/application/gnome-power-panel" = {
       application-id = "gnome-power-panel.desktop";
     };
 
-    "notifications/application/org-gnome-evolution-alarm-notify" = {
+    "org/gnome/desktop/notifications/application/org-gnome-evolution-alarm-notify" = {
       application-id = "org.gnome.Evolution-alarm-notify.desktop";
     };
 
-    "notifications/application/org-gnome-music" = {
+    "org/gnome/desktop/notifications/application/org-gnome-music" = {
       application-id = "org.gnome.Music.desktop";
     };
 
-    "notifications/application/org-gnome-nautilus" = {
+    "org/gnome/desktop/notifications/application/org-gnome-nautilus" = {
       application-id = "org.gnome.Nautilus.desktop";
     };
 
-    "notifications/application/signal-desktop" = {
+    "org/gnome/desktop/notifications/application/signal-desktop" = {
       application-id = "signal-desktop.desktop";
     };
 
-    "notifications/application/zotero-5-0-96-3" = {
+    "org/gnome/desktop/notifications/application/zotero-5-0-96-3" = {
       application-id = "zotero-5.0.96.3.desktop";
     };
 
-    "peripherals/keyboard" = {
+    "org/gnome/desktop/peripherals/keyboard" = {
       numlock-state = true;
     };
 
-    "peripherals/touchpad" = {
+    "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = true;
       two-finger-scrolling-enabled = true;
     };
 
-    "privacy" = {
+    "org/gnome/desktop/privacy" = {
       disable-microphone = false;
     };
 
-    "screensaver" = {
+    "org/gnome/desktop/screensaver" = {
       color-shading-type = "solid";
       picture-options = "zoom";
       picture-uri = "file:///home/lino/.dotfiles/wallpaper.png";
@@ -121,17 +121,17 @@ in
       secondary-color = "#000000";
     };
 
-    "search-providers" = {
+    "org/gnome/desktop/search-providers" = {
       disabled = [ "org.gnome.Contacts.desktop" ];
       sort-order = [ "org.gnome.Documents.desktop" "org.gnome.Nautilus.desktop" "org.gnome.Calculator.desktop" "org.gnome.seahorse.Application.desktop" "org.gnome.clocks.desktop" "org.gnome.Calendar.desktop" "org.gnome.Weather.desktop" "org.gnome.Contacts.desktop" ];
     };
 
-    "sound" = {
+    "org/gnome/desktop/sound" = {
       event-sounds = true;
       theme-name = "__custom";
     };
 
-    "wm/keybindings" = {
+    "org/gnome/desktop/wm/keybindings" = {
       activate-window-menu = [];
       close = [ "<Super>q" ];
       cycle-windows = [];
@@ -154,7 +154,7 @@ in
       toggle-fullscreen = [ "<Alt>f" ];
     };
 
-    "wm/preferences" = {
+    "org/gnome/desktop/wm/preferences" = {
       auto-raise = true;
       button-layout = "appmenu:minimize,maximize,close";
       focus-mode = "sloppy";

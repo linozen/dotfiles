@@ -6,7 +6,7 @@ let
 in
 {
   dconf.settings = {
-    "" = {
+    "org/gnome/shell/extensions/gnome-ui-tune" = {
       hide-search = true;
     };
 

@@ -6,8 +6,10 @@ let
 in
 {
   dconf.settings = {
-    "" = {
-      show-menu = true;
+    "org/gnome/shell/extensions/just-perfection" = {
+      activities-button = false;
+      app-menu = false;
+      panel = true;
     };
 
   };
