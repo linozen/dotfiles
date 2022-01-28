@@ -11,7 +11,9 @@ host git.fsfe.org
 # -- Personal ---
 # TODO Refactor personal infrastructure on NixOS
 host syno
+     user lino
      hostname 192.168.178.11
+     port 23432
      IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
 
 host containers
