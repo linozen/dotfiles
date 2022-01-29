@@ -31,14 +31,17 @@
   hardware.opengl.driSupport32Bit = true;
 
   # See: https://github.com/NixOS/nixpkgs/issues/103746
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
+  # systemd.services."getty@tty1".enable = false;
+  # systemd.services."autovt@tty1".enable = false;
 
   # From auto-generated hardware.nix
   boot.initrd.availableKernelModules =
     [ "nvme" "xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" ];
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-amd" ];
+
+  # See: https://nixos.wiki/wiki/ZFS
+  boot.kernelParams = [ "nohibernate" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
