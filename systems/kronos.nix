@@ -1,6 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
+  # Import modules
   imports = [
     ./modules/backup.nix
     ./modules/common.nix
@@ -67,9 +68,13 @@
   fileSystems."/persist" = {
     device = "rpool/safe/persist";
     fsType = "zfs";
+    neededForBoot = true;
   };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/dev/disk/by-partuuid/03d2beb7-7bde-f343-9501-5c9c83210eca";
+    randomEncryption.enable = true;
+  }];
 
   hardware.cpu.amd.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
