@@ -28,6 +28,10 @@
           inherit system;
           modules = [ ./systems/kronos.nix ];
         };
+        perses = lib.nixosSystem {
+          inherit system;
+          modules = [ ./systems/perses.nix ];
+        };
       };
 
       homeManagerConfigurations = {
@@ -44,6 +48,13 @@
           username = "lino";
           homeDirectory = "/home/lino";
           configuration = { imports = [ ./users/lino/kronos.nix ]; };
+        };
+        lino-perses = home-manager.lib.homeManagerConfiguration {
+          inherit system pkgs;
+          stateVersion = "21.11";
+          username = "lino";
+          homeDirectory = "/home/lino";
+          configuration = { imports = [ ./users/lino/perses.nix ]; };
         };
       };
     };
