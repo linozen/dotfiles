@@ -27,6 +27,10 @@ in {
   networking.useDHCP = false;
   networking.interfaces.enp0s31f6.useDHCP = true;
   networking.interfaces.wlp0s20f3.useDHCP = true;
+  environment.etc = {
+    "NetworkManager/system-connections".source =
+      "/persist/etc/NetworkManager/system-connections/";
+  };
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
