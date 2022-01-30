@@ -14,6 +14,12 @@
     ./modules/virtualisation.nix
   ];
 
+  # Configure networking
+  networking.hostName = "perses";
+  networking.hostId = "9a184486";
+  networking.networkmanager.enable = true;
+  networking.useDHCP = false;
+
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
