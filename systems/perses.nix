@@ -20,6 +20,10 @@
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
 
+  # Enable Gnome
+  services.xserver.displayManager.gdm.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
+
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "ehci_pci" "ahci" "sd_mod" "sdhci_pci" ];
   boot.initrd.kernelModules = [ ];
