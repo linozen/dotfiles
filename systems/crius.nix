@@ -25,6 +25,8 @@ in {
   networking.hostId = "8d7271a2";
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
+  networking.interfaces.enp0s31f6.useDHCP = true;
+  networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
@@ -62,7 +64,7 @@ in {
   # From auto-generated hardware.nix
   boot.initrd.availableKernelModules =
     [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
-  boot.initrd.kernelModules = [ ];
+  # boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
@@ -95,6 +97,7 @@ in {
   swapDevices = [ ];
 
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  hardware.enableRedistributableFirmware = true;
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 
