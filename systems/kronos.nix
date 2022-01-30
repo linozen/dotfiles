@@ -29,11 +29,6 @@
   # Enable NVIDIA drivers (no PRIME)
   nixpkgs.config.allowUnfree = true;
   services.xserver.videoDrivers = [ "nvidia" ];
-  hardware.opengl.driSupport32Bit = true;
-
-  # See: https://github.com/NixOS/nixpkgs/issues/103746
-  # systemd.services."getty@tty1".enable = false;
-  # systemd.services."autovt@tty1".enable = false;
 
   # From auto-generated hardware.nix
   boot.initrd.availableKernelModules =

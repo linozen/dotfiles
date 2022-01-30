@@ -30,7 +30,6 @@ in {
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "nvidia" ];
   services.xserver.layout = "gb";
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.displayManager = {
@@ -42,9 +41,16 @@ in {
   services.xserver.libinput.enable = true;
   services.xserver.libinput.touchpad.tapping = true;
   services.touchegg.enable = true;
+  environment.systemPackages = [
+    # Extension needed for gesture support in Gnome under X11
+    pkgs.gnomeExtensions.x11-gestures
+    # Offload script
+    nvidia-offload
+  ];
 
   # Enable NVIDIA drivers (with PRIME)
   nixpkgs.config.allowUnfree = true;
+  services.xserver.videoDrivers = [ "nvidia" ];
   hardware.nvidia.modesetting.enable = true;
   hardware.nvidia.nvidiaPersistenced = true;
   hardware.nvidia.prime = {
@@ -54,13 +60,6 @@ in {
     # Bus ID of the NVIDIA GPU
     nvidiaBusId = "PCI:1:0:0";
   };
-
-  # Install nvidia-offload script
-  environment.systemPackages = [ nvidia-offload ];
-
-  # See: https://github.com/NixOS/nixpkgs/issues/103746
-  systemd.services."getty@tty1".enable = false;
-  systemd.services."autovt@tty1".enable = false;
 
   # From auto-generated hardware.nix
   boot.initrd.availableKernelModules =
