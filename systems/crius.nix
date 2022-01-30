@@ -25,8 +25,6 @@ in {
   networking.hostId = "8d7271a2";
   networking.networkmanager.enable = true;
   networking.useDHCP = false;
-  networking.interfaces.enp0s31f6.useDHCP = true;
-  networking.interfaces.wlp0s20f3.useDHCP = true;
 
   # Enable the X11 windowing system.
   services.xserver.enable = true;
