@@ -49,6 +49,11 @@
           devices = [ "kronos" "crius" "syno" ];
           ignorePerms = false;
         };
+        "music" = {
+          path = "/home/lino/Music";
+          devices = [ "kronos" "crius" "syno" ];
+          ignorePerms = false;
+        };
       };
     };
   };
