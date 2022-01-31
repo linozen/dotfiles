@@ -21,6 +21,8 @@
         "ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBOstKfBbwVOYQh3J7X4nzd6/VYgLfaucP9z5n4cpSzcZAOKGh6jH8e1mhQ4YupthlsdPKyFFZ3pKo4mTaRRuiJo=";
     };
   };
+
+  # Setup offsite backups
   services.borgbackup.jobs."borgbase" = {
     paths = [ "/home" "/persist" ];
     exclude = [
@@ -48,9 +50,88 @@
     repo = "oxti13j3@oxti13j3.repo.borgbase.com:repo";
     encryption = {
       mode = "repokey-blake2";
-      passCommand = "cat /persist/borg/passphrase";
+      passCommand = "cat /persist/borgbase/passphrase";
     };
-    environment.BORG_RSH = "ssh -i /persist/borg/ssh_key";
+    environment.BORG_RSH = "ssh -i /persist/borgbase/ssh_key";
+    compression = "auto,lzma";
+    startAt = "hourly";
+    prune.keep = {
+      within = "2d"; # Keep all archives from the last two days
+      daily = 14;
+      weekly = 4;
+      monthly = -1; # Keep at least one archive for each month
+    };
+  };
+
+  # Setup rotating local backups
+  services.borgbackup.jobs."usb2" = {
+    paths = [ "/home" "/persist" ];
+    exclude = [
+      # Large paths in /persist
+      "/persist/var/lib/docker"
+      "/persist/var/lib/libvirt"
+
+      # Temporary files and caches in /home
+      "/home/*/.cache"
+      "/home/*/.compose-cache"
+      "/home/*/cache2"
+      "/home/*/Cache"
+      "/home/*/.npm/_cacache"
+      "/home/*/__pycache__"
+      "/home/*/target"
+      "/home/*/go/bin"
+      "/home/*/go/pkg"
+      "/home/*/node_modules"
+      "/home/*/bower_components"
+      "/home/*/_build"
+      "/home/*/.tox"
+      "/home/*/venv"
+      "/home/*/.venv"
+    ];
+    repo = "/run/media/lino/usb2/backup";
+    encryption = {
+      mode = "repokey-blake2";
+      passCommand = "cat /persist/usb2/passphrase";
+    };
+    compression = "auto,lzma";
+    startAt = "hourly";
+    prune.keep = {
+      within = "2d"; # Keep all archives from the last two days
+      daily = 14;
+      weekly = 4;
+      monthly = -1; # Keep at least one archive for each month
+    };
+  };
+
+  services.borgbackup.jobs."usb1" = {
+    paths = [ "/home" "/persist" ];
+    exclude = [
+      # Large paths in /persist
+      "/persist/var/lib/docker"
+      "/persist/var/lib/libvirt"
+
+      # Temporary files and caches in /home
+      "/home/*/.cache"
+      "/home/*/.compose-cache"
+      "/home/*/cache2"
+      "/home/*/Cache"
+      "/home/*/.npm/_cacache"
+      "/home/*/__pycache__"
+      "/home/*/target"
+      "/home/*/go/bin"
+      "/home/*/go/pkg"
+      "/home/*/node_modules"
+      "/home/*/bower_components"
+      "/home/*/_build"
+      "/home/*/.tox"
+      "/home/*/venv"
+      "/home/*/.venv"
+    ];
+    repo = "/run/media/lino/usb1/backup";
+    encryption = {
+      mode = "repokey-blake2";
+      passCommand = "cat /persist/usb1/passphrase";
+    };
     compression = "auto,lzma";
     startAt = "hourly";
     prune.keep = {
