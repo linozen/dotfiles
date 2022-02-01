@@ -26,6 +26,7 @@
     gtimelog
     # Research
     zotero
+    xournal
     # SFTP
     filezilla
     # Calendar Sync

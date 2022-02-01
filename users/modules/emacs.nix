@@ -40,8 +40,13 @@
     (ripgrep.override { withPCRE2 = true; })
     sqlite
     zstd
-    # Dictionaries
-    (aspellWithDicts (ds: with ds; [ de en en-computers en-science ]))
+    # Dictionaries & Grammar
+    enchant
+    hunspell
+    hunspellDicts.en_GB-ise
+    hunspellDicts.de_DE
+    jdk
+    # LaTeX
     texlive.combined.scheme-full
     # Language Servers
     nodePackages.bash-language-server
