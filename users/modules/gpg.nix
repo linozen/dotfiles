@@ -29,6 +29,10 @@
         source = ./gpg/fsfe_linda.key;
         trust = "marginal";
       }
+      {
+        source = ./gpg/fsfe_jackie.key;
+        trust = "marginal";
+      }
     ];
   };
 }

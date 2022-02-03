@@ -65,6 +65,16 @@ host fsfe-meitner
      user root
      identityfile ~/.ssh/legacy/t15_id_ed25519
 
+host fsfe-berzelius
+     hostname berzelius.fsfeurope.org
+     user root
+     identityfile ~/.ssh/legacy/t15_id_ed25519
+
+host fsfe-seaborg
+     hostname seaborg.fsfeurope.org
+     user root
+     identityfile ~/.ssh/legacy/t15_id_ed25519
+
 # --- BVPK ---
 # TODO Switch to new key
 host bvpk-prod
