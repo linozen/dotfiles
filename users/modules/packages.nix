@@ -27,6 +27,8 @@
     # Research
     zotero
     xournal
+    pandoc
+    plantuml
     # SFTP
     filezilla
     # Calendar Sync
@@ -36,6 +38,6 @@
     # TODO Move to virtualisation system modules
     virt-manager
     quickemu
+    vagrant
   ];
-
 }

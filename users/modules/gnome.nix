@@ -10,6 +10,7 @@
     gnomeExtensions.just-perfection
     gnomeExtensions.mullvad-indicator
     gnomeExtensions.tiling-assistant
+    gnomeExtensions.vitals
     gnome.gnome-tweaks
     gnome.dconf-editor
     dconf2nix
