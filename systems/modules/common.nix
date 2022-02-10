@@ -9,6 +9,9 @@
     '';
   };
 
+  # Allow unfree packages if I need them
+  nixpkgs.config.allowUnfree = true;
+
   # Don't enable auto-optimisation for now
   # nix.autoOptimiseStore = true;
 
