@@ -22,4 +22,9 @@
     enable = true;
     enableFishIntegration = true;
   };
+  # Configure comfy dev environments with lorri
+  # See: https://github.com/nix-community/lorri
+  services.lorri.enable = true;
+  # Configure direnv
+  programs.direnv.enable = true;
 }

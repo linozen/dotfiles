@@ -122,9 +122,6 @@
     pkgs.vim
   ];
 
-  # Enable fish for vendot completions
-  programs.fish.enable = true;
-
   # Enable Yubikey
   services.udev.packages = [ pkgs.yubikey-personalization ];
   services.pcscd.enable = true;

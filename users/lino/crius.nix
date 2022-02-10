@@ -24,7 +24,7 @@
     ../modules/symlinks.nix
     ../modules/gnome.nix
     ../modules/emacs.nix
-    ../modules/term.nix
+    ../modules/shell.nix
     ../modules/gpg.nix
     ../modules/mail.nix
   ];
