@@ -5,6 +5,10 @@
   home.packages = with pkgs; [
     # Music
     deadbeef
+    # Images
+    gthumb
+    image_optim
+    unzip
     # Nix-related
     nix-prefetch-git
     # Theming
@@ -31,6 +35,8 @@
     plantuml
     # SFTP
     filezilla
+    # DBs
+    beekeeper-studio
     # Calendar Sync
     evolution
     # Office
@@ -39,5 +45,10 @@
     virt-manager
     quickemu
     vagrant
+    docker-compose
+    ctop
+    # Development
+    drone-cli
+    gnumake
   ];
 }
