@@ -40,33 +40,42 @@
   services.xserver.libinput.touchpad.tapping = true;
   services.touchegg.enable = true;
 
+  # From auto-generated hardware.nix
+  boot.initrd.availableKernelModules =
+    [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
+
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
     device = "rpool/local/root";
     fsType = "zfs";
+    options = [ "x-gvfs-hide" ];
   };
 
   fileSystems."/boot" = {
     device = "/dev/disk/by-uuid/113A-9311";
     fsType = "vfat";
+    options = [ "x-gvfs-hide" ];
   };
 
   fileSystems."/nix" = {
     device = "rpool/local/nix";
     fsType = "zfs";
+    options = [ "x-gvfs-hide" ];
   };
 
   fileSystems."/home" = {
     device = "rpool/safe/home";
     fsType = "zfs";
+    options = [ "x-gvfs-hide" ];
   };
 
   fileSystems."/persist" = {
     device = "rpool/safe/persist";
     fsType = "zfs";
     neededForBoot = true;
+    options = [ "x-gvfs-hide" ];
   };
 
   swapDevices = [ ];
