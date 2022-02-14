@@ -5,6 +5,9 @@ host git.sr.ht
 host github.com
      IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
 
+host gitlab.com
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
+
 host git.fsfe.org
      IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
 
@@ -20,7 +23,7 @@ host containers
      hostname swartz-containers.sehn.dev
      user deployr
      port 64299
-     identityfile ~/.ssh/legacy/t15_id_ed25519
+     identityfile ~/.ssh/legacy/tower_id_ed25519
 
 host seedhost
      hostname rain.seedhost.eu
@@ -90,15 +93,15 @@ host bvpk-staging
      identityfile ~/.ssh/legacy/tower_id_ed25519
 
 # --- 7 Hills ---
-# TODO Switch to new key and NixOS
-host 7hills-next
-     hostname 7hills-next.sehn.dev
-     user deployr
-     port 64299
-     identityfile ~/.ssh/legacy/t15_id_ed25519
+# TODO Switch to new key
+host 7hills
+     hostname 195.201.98.179
+     user root
+     port 22
+     IdentityAgent /run/user/1000/yubikey-agent/yubikey-agent.sock
 
-host 7hills-strapi
-     hostname 7hills-strapi.sehn.dev
-     user deployr
-     port 64299
+# --- klefischer.de WP ---
+host klefischer
+     hostname h2950421.stratoserver.net
+     user root
      identityfile ~/.ssh/legacy/t15_id_ed25519
