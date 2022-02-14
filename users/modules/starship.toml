@@ -8,3 +8,9 @@ when = "tab --starship"
 shell = ["sh"]
 format = "[$output]($style) "
 style = "bold blue"
+
+[nix_shell]
+disabled = false
+impure_msg = "[impure](bold purple)"
+pure_msg = "[pure shell](bold green)"
+format = 'via [❄  $state( \($name\))](bold blue) '
