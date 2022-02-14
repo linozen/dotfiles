@@ -11,6 +11,7 @@
     gnomeExtensions.mullvad-indicator
     gnomeExtensions.tiling-assistant
     gnomeExtensions.vitals
+    gnomeExtensions.color-picker
     gnome.gnome-tweaks
     gnome.dconf-editor
     dconf2nix
