@@ -25,7 +25,7 @@ in
       maximize-with-gap = false;
       move-favorite-layout-mod = "Alt";
       move-split-tiles-mod = "Alt";
-      screen-gap = 22;
+      screen-gap = 0;
       search-popup-layout = [];
       tile-bottom-half = [ "<Alt>s" ];
       tile-bottomleft-quarter = [ "<Alt>z" ];
@@ -39,7 +39,7 @@ in
       tile-topright-quarter = [ "<Alt>e" ];
       tiling-popup-all-workspace = true;
       toggle-tiling-popup = [];
-      window-gap = 20;
+      window-gap = 0;
     };
 
   };
