@@ -32,7 +32,7 @@
   services.xserver.desktopManager.xterm.enable = false;
   services.xserver.displayManager = {
     gdm.enable = true;
-    gdm.wayland = false;
+    gdm.wayland = true;
   };
 
   # Enable libinput and gestures via touchegg

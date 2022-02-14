@@ -1,19 +1,24 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Enable Flakes
   nix = {
+    # Enable binary nix-community binary cache
+    binaryCaches = [ "https://nix-community.cachix.org/" ];
+    binaryCachePublicKeys = [
+      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+    ];
+    # Enable Flakes
     package = pkgs.nixFlakes;
+    # Enable flakes and don't garbage-collect my nix-shells, please
     extraOptions = ''
       experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
     '';
   };
 
   # Allow unfree packages if I need them
   nixpkgs.config.allowUnfree = true;
-
-  # Don't enable auto-optimisation for now
-  # nix.autoOptimiseStore = true;
 
   # Remove generations older than two weeks
   nix.gc = {
@@ -54,8 +59,9 @@
     # TODO Set up autoReplication of all important datasets
   };
 
-  # Set timezone
+  # Set timezone & locale
   time.timeZone = "Europe/Berlin";
+  i18n.defaultLocale = "en_GB.UTF-8";
 
   # Configure and slim down Gnome
   services.xserver.desktopManager.gnome.enable = true;
@@ -144,6 +150,7 @@
   systemd.tmpfiles.rules = [
     "L /var/lib/bluetooth - - - - /persist/var/lib/bluetooth"
     "L /var/lib/innernet - - - - /persist/var/lib/innernet"
+    "L /var/lib/docker - - - - /persist/var/lib/docker"
   ];
 
   # Configure SSH Daemon

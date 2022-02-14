@@ -2,7 +2,6 @@
 
 {
   boot.initrd.kernelModules = [ "i915" ];
-
   hardware.cpu.intel.updateMicrocode =
     lib.mkDefault config.hardware.enableRedistributableFirmware;
 

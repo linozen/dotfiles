@@ -22,9 +22,6 @@ in {
     nvidiaBusId = "PCI:1:0:0";
   };
 
-  # From auto-generated hardware.nix
-  boot.initrd.availableKernelModules =
-    [ "xhci_pci" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
   environment.systemPackages = [
     # Extension needed for gesture support in Gnome under X11
     pkgs.gnomeExtensions.x11-gestures
