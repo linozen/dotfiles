@@ -14,7 +14,7 @@
   # https://gist.github.com/mjlbach/179cf58e1b6f5afcb9a99d4aaf54f549
   programs.emacs = {
     enable = true;
-    package = pkgs.emacsGcc;
+    package = pkgs.emacsPgtkGcc;
     extraPackages = (epkgs: [
       # Needed for terminal emulation inside Emacs
       epkgs.vterm
@@ -41,6 +41,7 @@
     sqlite
     zstd
     # Dictionaries & Grammar
+    (aspellWithDicts (dicts: with dicts; [ de en en-computers en-science ]))
     enchant
     hunspell
     hunspellDicts.en_GB-ise
@@ -49,9 +50,12 @@
     # LaTeX
     texlive.combined.scheme-full
     # Language Servers
+    nodejs
+    nodePackages.js-beautify
+    nodePackages.vscode-langservers-extracted
     nodePackages.bash-language-server
     nodePackages.pyright
-    nodePackages.typescript-language-server
+    html-tidy
     # Formatters
     nixfmt
     nodePackages.prettier
