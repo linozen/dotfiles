@@ -6,7 +6,7 @@
     ./modules/backup.nix
     ./modules/common.nix
     ./modules/innernet.nix
-    # For multiple monitors, I didable nvidia.nix and enable intel.nix
+    # For multiple monitors, I disable nvidia.nix and enable intel.nix
     #./modules/nvidia.nix
     ./modules/intel.nix
     ./modules/printing.nix
