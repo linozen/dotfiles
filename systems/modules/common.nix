@@ -179,7 +179,7 @@
         # initialHashedPassword =
         #   "$6$pNdUmZBPAZuuDGbT$uNqIH6r9yMxag53XUZURfwXK0iMgBHH1/5s/poJtwy5Z2L6mYJrP7FeudbkZ14MqHKy6n0FLDsURWmp6QfUWt/";
         passwordFile = "/persist/passwords/lino";
-        extraGroups = [ "wheel" "docker" "qemu-libvirtd" "libvirtd" ];
+        extraGroups = [ "wheel" "audio" "docker" "qemu-libvirtd" "libvirtd" ];
         group = "users";
         uid = 1000;
         home = "/home/lino";
