@@ -1,10 +1,11 @@
 { config, lib, pkgs, ... }:
 
 {
-  # Install user applications
   home.packages = with pkgs; [
     # Music
     deadbeef
+    cmus
+    exaile
     # Images
     gthumb
     image_optim
@@ -28,11 +29,12 @@
     age
     # Time-tracking
     gtimelog
-    # Research
-    zotero
-    xournal
+    # Research & Learning
+    anki
     pandoc
     plantuml
+    xournal
+    zotero
     # SFTP
     filezilla
     # DBs
