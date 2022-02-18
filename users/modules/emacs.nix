@@ -42,10 +42,6 @@
     zstd
     # Dictionaries & Grammar
     (aspellWithDicts (dicts: with dicts; [ de en en-computers en-science ]))
-    enchant
-    hunspell
-    hunspellDicts.en_GB-ise
-    hunspellDicts.de_DE
     jdk
     # LaTeX
     texlive.combined.scheme-full
