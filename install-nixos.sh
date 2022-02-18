@@ -174,6 +174,14 @@ cat <<EOF > /mnt/persist/etc/nixos/configuration.nix
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+
+  # use the latest Linux kernel
+  boot.kernelPackages = pkgs.linuxKernel.packages.linux_5_15;
+
+  # firmware
+  nixpkgs.config.allowUnfree = true;
+  hardware.enableAllFirmware = true;
+
   # source: https://grahamc.com/blog/erase-your-darlings
   boot.initrd.postDeviceCommands = lib.mkAfter ''
     zfs rollback -r ${ZFS_BLANK_SNAPSHOT}
