@@ -3,6 +3,7 @@
 {
   # Import modules
   imports = [
+    ./modules/audio.nix
     ./modules/backup.nix
     ./modules/common.nix
     ./modules/innernet.nix
